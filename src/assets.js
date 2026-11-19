@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import { clone } from 'three/addons/utils/SkeletonUtils.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { SPECIES, TUNING, mulberry32 } from './species.js';
@@ -118,7 +119,7 @@ const LOAD_ATTEMPTS=3;
 // Loads every model the manifest names. Nothing stands in for a model that fails: a failed
 // download is tried again, and if it still fails prepare() rejects and the game does not start.
 export class AssetLibrary {
-  constructor(){this.loader=new GLTFLoader();this.manifest=null;this.templates=new Map();this.decorTemplates=new Map();this.mixers=[];}
+  constructor(){this.loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);this.manifest=null;this.templates=new Map();this.decorTemplates=new Map();this.mixers=[];}
   async prepare(){
     const r=await fetch('./public/models/manifest.json');if(!r.ok)throw Error(`Manifest ${r.status}`);
     this.manifest=await r.json();

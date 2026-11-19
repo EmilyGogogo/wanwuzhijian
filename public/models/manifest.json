@@ -1,5 +1,5 @@
 {
-  "startupBytes": 194611584,
+  "startupBytes": 40597076,
   "environment": {
     "heightfield": {
       "url": "./public/terrain/island-height.bin",
