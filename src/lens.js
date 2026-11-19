@@ -12,11 +12,26 @@ import * as THREE from 'three';
 // A very wide perspective render is coarse in its middle, which a fisheye then enlarges; when
 // that would make the centre of the view blurry, the middle is also drawn into its own
 // screen-sized target at a narrower angle and used wherever it reaches (the sharp centre).
+// The same pass carries a body's colour vision (vision.colorMatrix), applied in linear light
+// before tone mapping, and the sharpness of its eye (vision.acuity, see softSigma); a body with
+// either and no lens goes through it unbent.
 const vertexShader=`varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.,1.);}`;
 const fragmentShader=`varying vec2 vUv;uniform sampler2D scene;uniform sampler2D centre;
 uniform float curve;uniform float round;uniform float radius;uniform float fade;uniform float fadeMax;uniform float ripple;uniform float time;
 uniform float aspect;uniform float wideHalf;uniform float targetHalf;uniform float centreHalf;uniform float sharp;
-uniform float blur;uniform float vignette;uniform vec2 texel;uniform vec3 rim;
+uniform float blur;uniform float vignette;uniform vec2 texel;uniform vec3 rim;uniform mat3 colour;
+uniform vec2 softScene;uniform vec2 softCentre;
+// An eye less sharp than a human's: a Gaussian of 24 taps spread evenly over a golden-angle disc
+// reaching 2.5 sigma; s is one sigma in the target's uv (zero: a single sharp tap).
+vec3 sight(sampler2D t,vec2 uv,vec2 s){
+  if(s.x<=0.)return texture2D(t,uv).rgb;
+  vec3 sum=vec3(0.);float total=0.;
+  for(int i=0;i<24;i++){
+    float k=sqrt((float(i)+.5)/24.)*2.5,a=float(i)*2.39996,w=exp(-.5*k*k);
+    sum+=texture2D(t,uv+vec2(cos(a),sin(a))*k*s).rgb*w;total+=w;
+  }
+  return sum/total;
+}
 void main(){
   vec2 p=(vUv-.5)*2.*vec2(aspect,1.);
   float edge=mix(length(vec2(aspect,1.)),radius,round),r=length(p)/edge;
@@ -24,15 +39,16 @@ void main(){
   float theta=min(mix(atan(r*tan(wideHalf)),r*wideHalf,curve),1.5);
   vec2 dir=length(p)>0.?normalize(p):vec2(0.);
   vec2 uv=dir*tan(theta)/tan(targetHalf)/vec2(aspect,1.)*.5+.5;
-  vec3 c=texture2D(scene,clamp(uv,0.,1.)).rgb;
+  vec3 c=sight(scene,clamp(uv,0.,1.),softScene);
   float e=smoothstep(.45,1.,r)*blur;
   if(e>0.){vec2 d=texel*e*3.;c=(c*2.+texture2D(scene,uv+vec2(d.x,0.)).rgb+texture2D(scene,uv-vec2(d.x,0.)).rgb+texture2D(scene,uv+vec2(0.,d.y)).rgb+texture2D(scene,uv-vec2(0.,d.y)).rgb)/6.;}
   // The sharp centre: the same direction in the narrow target, faded out near its frame.
   if(sharp>.5){
     vec2 uc=dir*tan(theta)/tan(centreHalf)/vec2(aspect,1.)*.5+.5;
     float m=max(abs(uc.x-.5),abs(uc.y-.5)),w=(1.-smoothstep(.43,.49,m))*(1.-e);
-    if(w>0.)c=mix(c,texture2D(centre,clamp(uc,0.,1.)).rgb,w);
+    if(w>0.)c=mix(c,sight(centre,clamp(uc,0.,1.),softCentre),w);
   }
+  c=max(colour*c,0.);
   c*=1.-vignette*smoothstep(.55,1.,r);
   gl_FragColor=vec4(c,1.);
   #include <tonemapping_fragment>
@@ -64,6 +80,12 @@ export function scaleLens(lens,fov,scale){
 export function lensIsPlain(l,fov){return !l||(Math.abs(l.fieldDeg-fov)<.01&&l.curve<.001&&l.round<.001&&l.edgeBlur<.001&&l.vignette<.001);}
 // How much coarser than the screen the middle of the wide target is (above SHARP_AT, a sharp centre is drawn).
 const SHARP_AT=1.2,PIXEL_BUDGET=4e6;
+// One sigma of the blur for an eye of acuity a (Snellen fraction of a human's: a dog's 20/75 is
+// about .27), in pixels of a screen h pixels tall. The player resolves about a 1080th of the
+// screen height; an eye of acuity a details 1/a as coarse, which a Gaussian of sigma .68 × that
+// detail leaves (a tenth of the contrast at its scale). What the player's own eye already loses
+// is taken out, so acuity 1 is no blur.
+export const softSigma=(a,h)=>a>=.999?0:.68*h/1080*Math.sqrt(1/(a*a)-1);
 
 export class Lens {
   constructor(renderer){
@@ -71,18 +93,24 @@ export class Lens {
     const target=()=>new THREE.WebGLRenderTarget(1,1,{type:THREE.HalfFloatType,colorSpace:THREE.LinearSRGBColorSpace,samples:4});
     this.target=target();this.centre=target();
     const uniforms={scene:{value:this.target.texture},centre:{value:this.centre.texture},curve:{value:0},round:{value:0},radius:{value:2},fade:{value:.14},fadeMax:{value:0},ripple:{value:0},time:{value:0},
-      aspect:{value:1},wideHalf:{value:.5},targetHalf:{value:.5},centreHalf:{value:.5},sharp:{value:0},blur:{value:0},vignette:{value:0},texel:{value:new THREE.Vector2()},rim:{value:new THREE.Color()}};
+      aspect:{value:1},wideHalf:{value:.5},targetHalf:{value:.5},centreHalf:{value:.5},sharp:{value:0},blur:{value:0},vignette:{value:0},texel:{value:new THREE.Vector2()},rim:{value:new THREE.Color()},colour:{value:new THREE.Matrix3()},
+      softScene:{value:new THREE.Vector2()},softCentre:{value:new THREE.Vector2()}};
     this.material=new THREE.ShaderMaterial({uniforms,vertexShader,fragmentShader,depthTest:false,depthWrite:false});
     this.quad=new THREE.Mesh(new THREE.PlaneGeometry(2,2),this.material);this.quad.frustumCulled=false;
     this.screen=new THREE.Scene();this.screen.add(this.quad);this.flat=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
     this.last=null;
   }
   // Draws the frame through the lens (already blended and scaled); returns false when there is
-  // nothing to bend, so the caller renders normally. rim: the colour past a round lens's edge
+  // nothing to bend or recolour, so the caller renders normally. rim: the colour past a round lens's edge
   // (the water colour; linear, like scene.fog.color). renderScale: wide target size × the screen.
-  render(scene,camera,lens,{rim=null,renderScale=1.5}={}){
-    const r=this.renderer,fov=camera.fov,M=THREE.MathUtils;
-    if(lensIsPlain(lens,fov)){this.last=null;return false;}
+  // colour: a linear RGB matrix (row-major, 9 numbers) for the body's colour vision, or null.
+  // acuity: the sharpness of the body's eye (1 = a human's).
+  render(scene,camera,lens,{rim=null,renderScale=1.5,colour=null,acuity=1}={}){
+    const r=this.renderer,fov=camera.fov,M=THREE.MathUtils,plain=lensIsPlain(lens,fov);
+    if(plain&&!colour&&acuity>=.999){this.last=null;return false;}
+    // Colour or acuity alone: a lens whose edge (the screen corner) is at the camera's own corner angle maps
+    // the screen onto itself; drawn at screen size, without a sharp centre.
+    if(plain)lens={...plainLens(fov),fieldDeg:M.radToDeg(2*Math.atan(Math.tan(M.degToRad(fov/2))*Math.hypot(camera.aspect,1)))};
     r.getDrawingBufferSize(this.size);
     const D=M.degToRad,budget=Math.sqrt(PIXEL_BUDGET/Math.max(1,this.size.x*this.size.y));
     const wideHalf=Math.min(D(78),Math.max(D(fov/2),D(lens.fieldDeg/2)));
@@ -91,8 +119,8 @@ export class Lens {
     const corner=Math.hypot(camera.aspect,1),rc=corner/edge,cornerTheta=M.lerp(Math.atan(rc*Math.tan(wideHalf)),rc*wideHalf,lens.curve);
     const reach=Math.min(D(84),Math.max(cornerTheta,wideHalf)),targetHalf=Math.atan(Math.tan(reach)/corner);
     // Radians per screen half-height at the middle of the lens, and how much coarser the wide target is there.
-    const centreScale=M.lerp(Math.tan(wideHalf),wideHalf,lens.curve)/edge,wideK=Math.min(renderScale,budget);
-    const coarse=Math.tan(targetHalf)/(centreScale*wideK),sharp=coarse>SHARP_AT;
+    const centreScale=M.lerp(Math.tan(wideHalf),wideHalf,lens.curve)/edge,wideK=plain?1:Math.min(renderScale,budget);
+    const coarse=Math.tan(targetHalf)/(centreScale*wideK),sharp=!plain&&coarse>SHARP_AT;
     const k=sharp?Math.min(renderScale*.5,budget):wideK,w=Math.max(1,Math.round(this.size.x*k)),h=Math.max(1,Math.round(this.size.y*k));
     if(this.target.width!==w||this.target.height!==h)this.target.setSize(w,h);
     let centreHalf=targetHalf,cw=0,ch=0;const shadows=r.shadowMap.autoUpdate;
@@ -119,6 +147,10 @@ export class Lens {
     u.curve.value=lens.curve;u.round.value=lens.round;u.radius.value=lens.radius;
     u.fade.value=lens.fade;u.fadeMax.value=lens.fadeMax;u.ripple.value=lens.ripple;u.time.value=this.clock.getElapsedTime();u.aspect.value=camera.aspect;
     u.blur.value=lens.edgeBlur;u.vignette.value=lens.vignette;u.texel.value.set(1/w,1/h);
+    if(colour)u.colour.value.set(...colour);else u.colour.value.identity();
+    // The blur is held in screen pixels; in each target it is that many screen pixels at the middle of the view.
+    const soft=softSigma(acuity,this.size.y),inScene=soft*centreScale/Math.tan(targetHalf),inCentre=soft*centreScale/Math.tan(centreHalf);
+    u.softScene.value.set(inScene/this.size.x,inScene/this.size.y);u.softCentre.value.set(inCentre/this.size.x,inCentre/this.size.y);
     // Tone mapping and sRGB output happen in this screen pass (three.js skips both into a target);
     // the rim is mixed after them, so it is given in display colour.
     u.rim.value.copy(rim||this.rim.set(0,0,0)).convertLinearToSRGB();
@@ -126,7 +158,7 @@ export class Lens {
     // For checks: what was drawn, and how coarse the middle of the view is compared with the screen
     // (1 = pixel for pixel; the sharp centre brings it back near 1).
     const centreCoarse=sharp?Math.tan(centreHalf)/(centreScale*Math.min(1,budget)):coarse;
-    this.last={...lens,targetFovDeg:M.radToDeg(targetHalf*2),target:[w,h],sharp,centreFovDeg:sharp?M.radToDeg(centreHalf*2):null,centre:sharp?[cw,ch]:null,
+    this.last={...lens,colour,acuity,softPx:+soft.toFixed(2),targetFovDeg:M.radToDeg(targetHalf*2),target:[w,h],sharp,centreFovDeg:sharp?M.radToDeg(centreHalf*2):null,centre:sharp?[cw,ch]:null,
       wideCoarse:+coarse.toFixed(2),centreCoarse:+centreCoarse.toFixed(2)};
     return true;
   }

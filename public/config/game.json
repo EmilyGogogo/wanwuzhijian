@@ -1017,12 +1017,18 @@
       "response": "如果狮子会说话，我们也无法理解它。",
       "moments": {},
       "vision": {
-        "grayscale": 1,
+        "grayscale": 0,
         "saturation": 1,
         "contrast": 1.08,
         "brightness": 1,
         "fogMultiplier": 1,
-        "tint": null
+        "tint": null,
+        "acuity": 0.27,
+        "colorMatrix": [
+          0.2729, 0.9026, -0.1754,
+          0.2128, 0.7159, 0.0712,
+          0.0327, 0.1561, 0.8112
+        ]
       },
       "hearing": {
         "airLowpassHz": 2600,
@@ -1043,9 +1049,9 @@
       "staysAboveWater": false,
       "guide": {
         "shortName": "狗",
-        "perceptionLine": "黑白视野，耳朵更灵",
+        "perceptionLine": "蓝黄两色、略显模糊，耳朵更灵",
         "location": "出生空地旁，离开局的人只有几步。",
-        "artNote": "游戏里的黑白世界是一种表现方式，不是狗眼中的真实世界。",
+        "artNote": "狗只有两种视锥细胞：蓝与紫仍是蓝色，黄、橙、绿成了深浅不一的黄与土黄，红色暗成褐灰，草地上的红球几乎认不出。狗眼也不如人眼清晰，视力约为人的四分之一，画面因此柔化了一些。",
         "encyclopedia": [
           {
             "site": "英文维基百科",

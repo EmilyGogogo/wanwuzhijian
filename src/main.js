@@ -32,19 +32,24 @@ let game;
 
 // What the eye takes in for a body in a camera mode. Third person shares the human
 // view; first person uses the body's own vision, lens (camera.firstPerson.lens) and, for
-// bodies that have one, its own water colour (vision.underwaterFog; null keeps the shared water).
+// bodies that have one, its own water colour (vision.underwaterFog; null keeps the shared water)
+// colour vision (vision.colorMatrix: linear RGB, row-major; null is the human eye) and
+// sharpness (vision.acuity: 1 is the human eye).
 function viewOf(kind,mode='third_person'){
   const s=SPECIES[kind],first=mode==='first_person',tinted=first&&s.vision.tint;
   return {...(first?s.vision:CAMERA_MODES.third_person.vision),fov:first?s.fov:CAMERA_MODES.third_person.fovDeg,hearing:s.hearing,
+    colorMatrix:first?s.vision.colorMatrix||null:null,acuity:first?s.vision.acuity??1:1,
     tintAmount:tinted?1:0,tintStrength:tinted?(s.vision.tintOpacity??.32):0,lens:first?s.firstPerson?.lens||null:null,
     water:[[first?s.vision.underwaterFog||null:null,1]]};
 }
+const IDENTITY3=[1,0,0,0,1,0,0,0,1];
 function blendView(a,b,f){
   const out={hearing:{}};
-  for(const key of ['grayscale','saturation','contrast','brightness','fogMultiplier','fov'])out[key]=lerp(a[key],b[key],f);
+  for(const key of ['grayscale','saturation','contrast','brightness','fogMultiplier','fov','acuity'])out[key]=lerp(a[key],b[key],f);
   for(const key of Object.keys(b.hearing))out.hearing[key]=typeof b.hearing[key]==='number'?lerp(a.hearing[key],b.hearing[key],f):(f<.5?a.hearing[key]:b.hearing[key]);
   out.tint=b.tint||a.tint;out.tintAmount=(a.tint?1-f:0)+(b.tint?f:0);out.tintStrength=lerp(a.tintStrength,b.tintStrength,f);
   out.lens=blendLens(a.lens,a.fov,b.lens,b.fov,f);
+  out.colorMatrix=a.colorMatrix||b.colorMatrix?IDENTITY3.map((v,i)=>lerp(a.colorMatrix?.[i]??v,b.colorMatrix?.[i]??v,f)):null;
   out.water=[...a.water.map(([w,k])=>[w,k*(1-f)]),...b.water.map(([w,k])=>[w,k*f])];
   return out;
 }
@@ -554,10 +559,15 @@ class Game {
   }
   // The lens for the current view at its tuned strength, or null.
   currentLens(){return this.started?scaleLens(this.view?.lens,this.camera.fov,tune('firstPersonLensScale',1)):null;}
+  // The eye of the current view: its colour vision (a linear RGB matrix) and sharpness, or null for the human eye.
+  currentSight(){
+    const v=this.started?this.view:null,colour=v?.colorMatrix||null,acuity=v?.acuity??1;
+    return colour||acuity<.999?{colour,acuity}:null;
+  }
   renderFrame(){
-    const lens=this.currentLens();
-    if(!lens)this.lens.last=null;
-    if(!lens||!this.lens.render(this.scene,this.camera,lens,{rim:this.scene.userData.underwater?this.scene.fog.color:null,renderScale:tune('firstPersonLensRenderScale',1.5)}))this.renderer.render(this.scene,this.camera);
+    const lens=this.currentLens(),sight=this.currentSight();
+    if(!lens&&!sight)this.lens.last=null;
+    if((!lens&&!sight)||!this.lens.render(this.scene,this.camera,lens,{rim:this.scene.userData.underwater?this.scene.fog.color:null,renderScale:tune('firstPersonLensRenderScale',1.5),colour:sight?.colour||null,acuity:sight?.acuity??1}))this.renderer.render(this.scene,this.camera);
   }
   // The sun (or the moon at night) lights from the atmosphere's direction; near layers keep a
   // tight shadow box around the body, large layers light from far away without shadows.
