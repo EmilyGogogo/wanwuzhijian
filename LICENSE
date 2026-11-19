@@ -1,0 +1,88 @@
+# 许可证 / License
+
+Required Notice: Copyright (c) 2026 EmilyGogogo and Between the Worlds contributors (https://github.com/EmilyGogogo/between-the-worlds)
+
+本项目的源代码公开供查看与学习，但**不是开源项目**。除下文“第三方内容”外，本仓库中的代码、文档、设计数据及项目自有资产按 **PolyForm Strict License 1.0.0**（全文附后）提供：允许非商业目的的使用、学习与个人运行；**不允许再分发，也不允许修改或据此制作新作品**。如需其他使用方式，请联系权利人取得书面授权。
+
+The source code of this project is published for viewing and study; it is **not open source**. Except for the third-party content listed below, the code, documentation, design data and project-owned assets in this repository are made available under the **PolyForm Strict License 1.0.0** (full text below): noncommercial use, study and personal running are permitted; **distribution, changes and new works based on it are not**. Contact the licensor for any other permission.
+
+## 赛事说明 / Competition
+
+本许可不转移作品所有权。按本项目所参加赛事的最终规则及报名授权条款授予主办方的展示、传播等使用权，不受本许可限制。权利人可另行书面授予其他许可。
+
+This license does not transfer ownership. Rights of display, dissemination and use granted to the organizer under the final rules and registration terms of the competition this project enters are not limited by this license. The licensor may grant other licenses separately in writing.
+
+## 第三方内容 / Third-party content
+
+以下内容不属于本许可的授权范围，其权利归原权利人，按各自条款使用；详见 `THIRD_PARTY.md`。
+
+The following content is not licensed under these terms. It belongs to its original rights holders and is used under its own terms; see `THIRD_PARTY.md`.
+
+- **Aholo Lux3D 生成的模型 / Models generated with Aholo Lux3D**（`public/models/` 中由其修整导出的模型）：使用本项目所参加赛事的指定工具 Aholo Lux3D 国内版生成，按 Aholo Lux3D 用户协议及赛事规则使用；归属与对外分发范围以平台条款为准。
+- **Three.js**（`vendor/`）：MIT License，见 `vendor/LICENSE.three`。
+- **Poly Haven 贴图 / textures**（`public/textures/ground/`，以及打包进植被模型的叶片与树皮贴图）：CC0。
+- **海鸥参考照片 / Gull reference photo**（用于生成海鸥模型）：Photo: PierreSelim, CC BY 3.0, via Wikimedia Commons, background removed.
+- **维基百科摘要 / Wikipedia excerpts**（`public/config/game.json` 中的 `guide.encyclopedia`）：CC BY-SA 4.0，逐段注明条目与修订。
+- **世界回应引文 / Quotations**（`public/config/game.json`）：原著及译文的权利归原作者与译者，来源见 `THIRD_PARTY.md`。
+
+---
+
+# PolyForm Strict License 1.0.0
+
+<https://polyformproject.org/licenses/strict/1.0.0>
+
+## Acceptance
+
+In order to get any license under these terms, you must agree to them as both strict obligations and conditions to all your licenses.
+
+## Copyright License
+
+The licensor grants you a copyright license for the software to do everything you might do with the software that would otherwise infringe the licensor's copyright in it for any permitted purpose, other than distributing the software or making changes or new works based on the software.
+
+## Patent License
+
+The licensor grants you a patent license for the software that covers patent claims the licensor can license, or becomes able to license, that you would infringe by using the software.
+
+## Noncommercial Purposes
+
+Any noncommercial purpose is a permitted purpose.
+
+## Personal Uses
+
+Personal use for research, experiment, and testing for the benefit of public knowledge, personal study, private entertainment, hobby projects, amateur pursuits, or religious observance, without any anticipated commercial application, is use for a permitted purpose.
+
+## Noncommercial Organizations
+
+Use by any charitable organization, educational institution, public research organization, public safety or health organization, environmental protection organization, or government institution is use for a permitted purpose regardless of the source of funding or obligations resulting from the funding.
+
+## Fair Use
+
+You may have "fair use" rights for the software under the law. These terms do not limit them.
+
+## No Other Rights
+
+These terms do not allow you to sublicense or transfer any of your licenses to anyone else, or prevent the licensor from granting licenses to anyone else.  These terms do not imply any other licenses.
+
+## Patent Defense
+
+If you make any written claim that the software infringes or contributes to infringement of any patent, your patent license for the software granted under these terms ends immediately. If your company makes such a claim, your patent license ends immediately for work on behalf of your company.
+
+## Violations
+
+The first time you are notified in writing that you have violated any of these terms, or done anything with the software not covered by your licenses, your licenses can nonetheless continue if you come into full compliance with these terms, and take practical steps to correct past violations, within 32 days of receiving notice.  Otherwise, all your licenses end immediately.
+
+## No Liability
+
+***As far as the law allows, the software comes as is, without any warranty or condition, and the licensor will not be liable to you for any damages arising out of these terms or the use or nature of the software, under any kind of legal claim.***
+
+## Definitions
+
+The **licensor** is the individual or entity offering these terms, and the **software** is the software the licensor makes available under these terms.
+
+**You** refers to the individual or entity agreeing to these terms.
+
+**Your company** is any legal entity, sole proprietorship, or other kind of organization that you work for, plus all organizations that have control over, are under the control of, or are under common control with that organization.  **Control** means ownership of substantially all the assets of an entity, or the power to direct its management and policies by vote, contract, or otherwise.  Control can be direct or indirect.
+
+**Your licenses** are all the licenses granted to you for the software under these terms.
+
+**Use** means anything you do with the software requiring one of your licenses.

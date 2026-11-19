@@ -1,0 +1,469 @@
+{
+  "models": {
+    "kapok": {
+      "source": "Aholo Lux3D G1 text-to-3D (v002/kapok-giant.glb)",
+      "height": 15.0,
+      "crownRadius": 6.985,
+      "crownBase": 9.6,
+      "sway": 0.6,
+      "scenery": true,
+      "rawTriangles": 128312,
+      "bark": {
+        "tileM": 0.552,
+        "depthM": 0.0121,
+        "strength": 0.6
+      },
+      "leaves": {
+        "atlas": "broad",
+        "source": "Poly Haven island_tree_01 leaf texture (CC0)",
+        "layers": [
+          {
+            "sprigs": 3600,
+            "size": 0.28
+          }
+        ],
+        "core": "none",
+        "foliageAreaM2": [
+          979.0
+        ],
+        "woodTop": 0.73,
+        "grownBranchTriangles": 10006
+      },
+      "occlusion": [
+        0.651,
+        0.308
+      ],
+      "impostor": {
+        "center": [
+          0.1305,
+          7.8159,
+          0.1019
+        ],
+        "half": 9.2105,
+        "headings": 16,
+        "elevations": [
+          4.0,
+          32.0,
+          62.0
+        ],
+        "frame": 256,
+        "color": "kapok-impostor.webp",
+        "normal": "kapok-impostor-n.webp",
+        "gain": 0.58,
+        "ambient": 0.33
+      },
+      "triangles": [
+        75999,
+        7319
+      ],
+      "model": "kapok.glb"
+    },
+    "strangler_fig": {
+      "source": "Aholo Lux3D G1 text-to-3D (v002/strangler-fig.glb)",
+      "height": 7.968,
+      "crownRadius": 3.803,
+      "crownBase": 2.55,
+      "sway": 0.7,
+      "scenery": true,
+      "rawTriangles": 148852,
+      "bark": {
+        "tileM": 0.516,
+        "depthM": 0.0113,
+        "strength": 0.6
+      },
+      "leaves": {
+        "atlas": "broad",
+        "source": "Poly Haven island_tree_01 leaf texture (CC0)",
+        "layers": [
+          {
+            "sprigs": 3200,
+            "size": 0.17
+          }
+        ],
+        "core": "none",
+        "foliageAreaM2": [
+          470.9
+        ],
+        "woodTop": 0.8,
+        "grownBranchTriangles": 9130
+      },
+      "occlusion": [
+        0.595,
+        0.292
+      ],
+      "impostor": {
+        "center": [
+          -0.1039,
+          4.1543,
+          -0.1823
+        ],
+        "half": 5.1129,
+        "headings": 16,
+        "elevations": [
+          4.0,
+          32.0,
+          62.0
+        ],
+        "frame": 256,
+        "color": "strangler_fig-impostor.webp",
+        "normal": "strangler_fig-impostor-n.webp",
+        "gain": 0.64,
+        "ambient": 0.19
+      },
+      "triangles": [
+        76999,
+        6839
+      ],
+      "model": "strangler_fig.glb"
+    },
+    "moriche_palm": {
+      "source": "Aholo Lux3D G1 text-to-3D (v002/moriche-palm.glb)",
+      "height": 5.748,
+      "crownRadius": 1.939,
+      "crownBase": 2.069,
+      "sway": 1.0,
+      "scenery": true,
+      "rawTriangles": 143617,
+      "trimmedBase": 0.042,
+      "occlusion": [
+        0.674,
+        0.179
+      ],
+      "impostor": {
+        "center": [
+          -0.0099,
+          2.874,
+          -0.0164
+        ],
+        "half": 3.0885,
+        "headings": 16,
+        "elevations": [
+          4.0,
+          32.0,
+          62.0
+        ],
+        "frame": 256,
+        "color": "moriche_palm-impostor.webp",
+        "normal": "moriche_palm-impostor-n.webp",
+        "gain": 0.5,
+        "ambient": 0.14
+      },
+      "triangles": [
+        29999,
+        5998
+      ],
+      "model": "moriche_palm.glb"
+    },
+    "cecropia": {
+      "source": "Aholo Lux3D G1 text-to-3D (v002/cecropia.glb)",
+      "height": 4.446,
+      "crownRadius": 1.746,
+      "crownBase": 1.956,
+      "sway": 1.0,
+      "scenery": true,
+      "rawTriangles": 154228,
+      "trimmedBase": 0.012,
+      "bark": {
+        "tileM": 0.711,
+        "depthM": 0.0156,
+        "strength": 0.6
+      },
+      "leaves": {
+        "atlas": "palmate",
+        "source": "Poly Haven pachira_aquatica_01 leaf texture (CC0)",
+        "layers": [
+          {
+            "faces": "leafy",
+            "style": "disc",
+            "sprigs": 190,
+            "size": 0.46
+          }
+        ],
+        "core": "none",
+        "foliageAreaM2": [
+          36.7
+        ],
+        "woodTop": 0.58,
+        "grownBranchTriangles": 0
+      },
+      "occlusion": [
+        0.869,
+        0.177
+      ],
+      "impostor": {
+        "center": [
+          0.0008,
+          2.2899,
+          0.0088
+        ],
+        "half": 2.5511,
+        "headings": 16,
+        "elevations": [
+          4.0,
+          32.0,
+          62.0
+        ],
+        "frame": 256,
+        "color": "cecropia-impostor.webp",
+        "normal": "cecropia-impostor-n.webp",
+        "gain": 0.85,
+        "ambient": 0.61
+      },
+      "triangles": [
+        4549,
+        2044
+      ],
+      "model": "cecropia.glb"
+    },
+    "jacaranda": {
+      "source": "Aholo Lux3D G1 text-to-3D (v002/jacaranda.glb)",
+      "height": 9.7,
+      "crownRadius": 5.115,
+      "crownBase": 1.94,
+      "sway": 0.9,
+      "scenery": true,
+      "rawTriangles": 131107,
+      "trimmedBase": 0.03,
+      "bark": {
+        "tileM": 2.581,
+        "depthM": 0.0565,
+        "strength": 0.6
+      },
+      "leaves": {
+        "atlas": "blossom",
+        "source": "Poly Haven island_tree_01 leaf texture (CC0)",
+        "layers": [
+          {
+            "faces": "violet",
+            "variant": 1,
+            "sprigs": 1500,
+            "size": 0.36
+          },
+          {
+            "faces": "green",
+            "variant": 0,
+            "sprigs": 700,
+            "size": 0.4
+          }
+        ],
+        "core": "none",
+        "foliageAreaM2": [
+          347.6,
+          223.9
+        ],
+        "woodTop": 0.66,
+        "grownBranchTriangles": 0
+      },
+      "occlusion": [
+        0.707,
+        0.211
+      ],
+      "impostor": {
+        "center": [
+          -0.035,
+          5.1252,
+          -0.2005
+        ],
+        "half": 6.7219,
+        "headings": 16,
+        "elevations": [
+          4.0,
+          32.0,
+          62.0
+        ],
+        "frame": 256,
+        "color": "jacaranda-impostor.webp",
+        "normal": "jacaranda-impostor-n.webp",
+        "gain": 0.96,
+        "ambient": 0.31
+      },
+      "triangles": [
+        28090,
+        5140
+      ],
+      "model": "jacaranda.glb"
+    },
+    "canopy": {
+      "source": "Aholo Lux3D G1 text-to-3D (v001/2-canopy.glb)",
+      "height": 8.0,
+      "crownRadius": 3.623,
+      "crownBase": 2.56,
+      "sway": 0.8,
+      "scenery": false,
+      "rawTriangles": 37003,
+      "bark": {
+        "tileM": 0.64,
+        "depthM": 0.014,
+        "strength": 0.6
+      },
+      "leaves": {
+        "atlas": "broad",
+        "source": "Poly Haven island_tree_01 leaf texture (CC0)",
+        "layers": [
+          {
+            "sprigs": 3600,
+            "size": 0.19
+          }
+        ],
+        "core": "none",
+        "foliageAreaM2": [
+          559.3
+        ],
+        "woodTop": 0.47,
+        "grownBranchTriangles": 10046
+      },
+      "occlusion": [
+        0.673,
+        0.295
+      ],
+      "triangles": [
+        51999,
+        6820
+      ],
+      "model": "canopy.glb"
+    },
+    "acai": {
+      "source": "Aholo Lux3D G1 text-to-3D (v001/3-acai.glb)",
+      "height": 4.5,
+      "crownRadius": 2.039,
+      "crownBase": 1.35,
+      "sway": 1.0,
+      "scenery": false,
+      "rawTriangles": 44971,
+      "occlusion": [
+        0.616,
+        0.241
+      ],
+      "triangles": [
+        25999,
+        2839
+      ],
+      "model": "acai.glb"
+    },
+    "heliconia": {
+      "source": "Aholo Lux3D G1 text-to-3D (v002/heliconia.glb)",
+      "height": 1.2,
+      "crownRadius": 0.553,
+      "crownBase": 0.336,
+      "sway": 2.5,
+      "scenery": true,
+      "rawTriangles": 59696,
+      "occlusion": [
+        0.853,
+        0.119
+      ],
+      "triangles": [
+        9000
+      ],
+      "model": "heliconia.glb"
+    },
+    "daisy": {
+      "source": "Aholo Lux3D G1 text-to-3D (v002/yellow-daisy.glb)",
+      "height": 0.472,
+      "crownRadius": 0.292,
+      "crownBase": 0.047,
+      "sway": 4.0,
+      "scenery": true,
+      "rawTriangles": 64776,
+      "occlusion": [
+        0.703,
+        0.176
+      ],
+      "triangles": [
+        6000
+      ],
+      "model": "daisy.glb"
+    },
+    "lily": {
+      "source": "Aholo Lux3D G1 text-to-3D (v002/victoria-lily.glb)",
+      "height": 0.034,
+      "crownRadius": 0.202,
+      "crownBase": 0.017,
+      "sway": 0,
+      "scenery": true,
+      "rawTriangles": 42370,
+      "trimmedBase": 0.14,
+      "occlusion": [
+        0.935,
+        0.112
+      ],
+      "triangles": [
+        7999
+      ],
+      "model": "lily.glb"
+    },
+    "forest_fern": {
+      "source": "Aholo Lux3D image-to-3D; creator confirmed 2026-11-18",
+      "height": 0.563,
+      "crownRadius": 0.336,
+      "crownBase": 0.146,
+      "sway": 2.0,
+      "scenery": true,
+      "rawTriangles": 342364,
+      "occlusion": [
+        0.891,
+        0.092
+      ],
+      "triangles": [
+        4000
+      ],
+      "model": "forest_fern.glb"
+    },
+    "understory_palm": {
+      "source": "Aholo Lux3D image-to-3D; creator confirmed 2026-11-18",
+      "height": 1.201,
+      "crownRadius": 0.668,
+      "crownBase": 0.072,
+      "sway": 1.5,
+      "scenery": true,
+      "rawTriangles": 517022,
+      "occlusion": [
+        0.837,
+        0.117
+      ],
+      "triangles": [
+        6000
+      ],
+      "model": "understory_palm.glb"
+    },
+    "forest_sedge": {
+      "source": "Aholo Lux3D image-to-3D; creator confirmed 2026-11-18",
+      "height": 1.0,
+      "crownRadius": 0.54,
+      "crownBase": 0.14,
+      "sway": 2.5,
+      "scenery": true,
+      "rawTriangles": 341346,
+      "occlusion": [
+        0.855,
+        0.146
+      ],
+      "triangles": [
+        2500
+      ],
+      "model": "forest_sedge.glb"
+    },
+    "marantaceae": {
+      "source": "Aholo Lux3D image-to-3D; creator confirmed 2026-11-18",
+      "height": 0.6,
+      "crownRadius": 0.324,
+      "crownBase": 0.096,
+      "sway": 1.8,
+      "scenery": true,
+      "rawTriangles": 156918,
+      "occlusion": [
+        0.915,
+        0.1
+      ],
+      "triangles": [
+        3500
+      ],
+      "model": "marantaceae.glb"
+    }
+  },
+  "generator": "project/vegetation/build_vegetation.py",
+  "barkDetail": {
+    "texture": "bark-detail.webp",
+    "source": "Poly Haven bark_brown_02 (CC0)"
+  }
+}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#d6dfcf" />
+  <meta name="description" content="成为风中的草，大河中的岛。一个关于尺度与存在的自由探索世界。" />
+  <title>万物之间 · Between All Things</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./src/style.css" />
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/addons/"}}</script>
+</head>
+<body>
+  <main id="experience" aria-label="万物之间，三维探索世界">
+    <canvas id="world" aria-label="游戏画面。WASD 或方向键移动，鼠标环视，V 切换视角，R 魂穿，Esc 暂停与操作说明。" aria-describedby="control-guide" tabindex="0"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <div id="perception-tint" class="perception-tint" aria-hidden="true"></div>
+    <div class="cinema-bars" aria-hidden="true"><i></i></div>
+    <header class="topbar">
+      <a class="wordmark" href="./" aria-label="万物之间首页">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11.5"/><ellipse cx="16" cy="16" rx="5" ry="14" transform="rotate(43 16 16)"/><circle class="dot" cx="23.8" cy="7.8" r="2"/></svg>
+        <span>万物之间<small>BETWEEN ALL THINGS</small></span>
+      </a>
+      <div class="top-actions">
+        <button id="sound" class="icon-button" aria-label="开启环境声" aria-pressed="false" title="环境声">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5 5.5 9H3v6h2.5l4.5 4Z"/><path class="sound-wave" d="M14 8c2 2 2 6 0 8m3-11c4 4 4 10 0 14"/><path class="sound-off" d="m15 9 6 6m0-6-6 6"/></svg>
+        </button>
+        <button id="pause-button" class="icon-button pause-button" aria-label="暂停与操作说明" title="暂停与操作说明 · Esc" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg><span>操作 · Esc</span>
+        </button>
+      </div>
+    </header>
+
+    <section id="welcome" class="welcome">
+      <div class="eyebrow"><span></span> 一场没有终点的漫游</div>
+      <h1>万物之间</h1>
+      <p>成为一株草，也成为一座岛。</p>
+      <button id="enter" class="enter-button" disabled><span id="enter-label">风正在经过</span><svg viewBox="0 0 32 16" aria-hidden="true"><path d="M0 8h29m-6-6 6 6-6 6"/></svg></button>
+      <div id="load-progress" class="load-progress" role="progressbar" aria-label="载入进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="load-track"><i id="load-fill"></i></div><span id="load-text">正在连接</span></div>
+      <div class="welcome-controls">WASD / 方向键移动，鼠标环视，V 切换第一 / 第三人称。<br>进入后指针会隐藏，按 Esc 暂停并显示鼠标。<br>若指针仍可见，按住鼠标左键拖动画面。<br><span id="welcome-sky">这里的一天约 20 分钟：会下阵雨，也会入夜；右上角色条预告接下来的天色。</span></div>
+    </section>
+    <div id="opening-mark" class="opening-mark" aria-hidden="true"><span>风起的地方</span><i></i><small>THE QUIET SHORE</small></div>
+
+    <div id="presence" class="presence" hidden><span class="presence-line"></span><div><span id="body-name">草</span><small id="body-place">风起的地方</small></div></div>
+    <div id="first-hint" class="first-hint" role="status"></div>
+    <aside id="control-guide" class="control-guide" aria-label="操作速查" hidden>
+      <div id="control-status" class="control-status" role="status" hidden></div>
+      <div id="move-guide"><kbd>WASD / ↑↓←→</kbd> <span id="movement-label">移动</span> <span>·</span> <span id="look-guide">鼠标环视</span></div>
+      <div id="possess-guide"><kbd>R</kbd> 看向涟漪，成为它 <span>·</span> <kbd>V</kbd> <span id="view-label">第三人称</span></div>
+      <div><kbd>Shift</kbd> 加速 <span>·</span> <kbd>Esc</kbd> 暂停 / 操作</div>
+      <div id="vertical-guide" hidden>抬头或低头，向前移动可升降</div>
+    </aside>
+    <div id="response" class="response" aria-live="polite"></div>
+    <div id="loading-notice" class="loading-notice" role="status" hidden></div>
+
+    <section id="pause" class="pause-layer" aria-label="暂停菜单" hidden>
+      <div class="pause-card">
+        <div id="pause-reason" class="eyebrow">停留片刻</div>
+        <h2>世界仍在这里。</h2>
+        <div class="controls">
+          <div><span id="pause-movement-label">前 / 后 / 左 / 右</span><kbd>W S A D / ↑ ↓ ← →</kbd></div>
+          <div><span>环视</span><span>移动鼠标 / 按住左键拖动</span></div>
+          <div><span>第一 / 第三人称</span><kbd>V</kbd></div>
+          <div><span>加速</span><kbd>Shift</kbd></div>
+          <div><span>魂穿</span><span>看向涟漪，按 <kbd>R</kbd></span></div>
+          <div><span>鸟与鱼升降</span><span>抬头或低头，再向前</span></div>
+          <div><span>地图 显示 / 隐藏</span><kbd>M</kbd></div>
+          <div><span>地图 放大 / 缩小</span><kbd>+ / −</kbd></div>
+          <div><span>天色</span><span>地图下方色条：未来 10 分钟的昼夜与阵雨</span></div>
+          <div><span>暂停</span><kbd>Esc</kbd></div>
+          <div><span>环境声</span><button id="pause-sound" class="text-toggle" aria-pressed="false" aria-label="开启环境声">关</button></div>
+        </div>
+        <p class="resume-note">继续后指针会隐藏，用于环视。<br>若指针仍可见，按住鼠标左键拖动。</p>
+        <button id="resume" class="enter-button"><span>继续漫游</span><svg viewBox="0 0 32 16" aria-hidden="true"><path d="M0 8h29m-6-6 6 6-6 6"/></svg></button>
+        <div class="pause-footer"><span id="save-status">足迹会留在这台设备上</span><button id="new-journey">重新开始</button></div>
+      </div>
+    </section>
+    <section id="fallback" class="fallback" hidden><h2>暂时无法展开这片世界</h2><p id="fallback-detail">请使用支持 WebGL 2 的电脑浏览器。</p><button onclick="location.reload()">重新进入</button></section>
+    <div id="mobile-notice" class="mobile-notice">这片旷野，适合用电脑和键鼠漫游。</div>
+  </main>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

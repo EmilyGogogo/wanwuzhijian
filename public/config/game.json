@@ -1,0 +1,3413 @@
+{
+  "version": "0.4-review",
+  "cameraModes": {
+    "default": "third_person",
+    "third_person": {
+      "movement": "camera_relative_face_travel",
+      "followBodyTurn": true,
+      "fovDeg": 48,
+      "vision": {
+        "grayscale": 0,
+        "saturation": 1,
+        "contrast": 1,
+        "brightness": 1,
+        "fogMultiplier": 1,
+        "tint": null
+      }
+    },
+    "first_person": {
+      "movement": "camera_relative_look_heading",
+      "vision": "current_body",
+      "hearing": "current_body"
+    }
+  },
+  "scaleLayers": {
+    "0": {
+      "cameraLookAhead": 0.65,
+      "cameraTerrainFloor": true,
+      "cameraCollision": true,
+      "fogDensity": 0.0016,
+      "localSun": true,
+      "focusHeightRatio": 0.44,
+      "possessMinPitch": null
+    },
+    "1": {
+      "cameraLookAhead": 0.45,
+      "cameraTerrainFloor": true,
+      "cameraCollision": true,
+      "fogDensity": 0.0016,
+      "localSun": true,
+      "focusHeightRatio": 0.44,
+      "possessMinPitch": null
+    },
+    "2": {
+      "cameraLookAhead": 0.22,
+      "cameraTerrainFloor": false,
+      "cameraCollision": true,
+      "fogDensity": 0.0006,
+      "localSun": true,
+      "focusHeightRatio": 0.35,
+      "possessMinPitch": null
+    },
+    "3": {
+      "cameraLookAhead": 0.22,
+      "cameraTerrainFloor": false,
+      "cameraCollision": false,
+      "fogDensity": 0.0003,
+      "localSun": false,
+      "focusHeightRatio": 0.44,
+      "possessMinPitch": 0.34
+    }
+  },
+  "scaleTiers": [
+    {
+      "id": "S1",
+      "name": "近地",
+      "rank": 0,
+      "liftEyeHeightM": null,
+      "reachNote": null
+    },
+    {
+      "id": "S2",
+      "name": "人身",
+      "rank": 1,
+      "liftEyeHeightM": 3,
+      "reachNote": null
+    },
+    {
+      "id": "S3",
+      "name": "林冠",
+      "rank": 2,
+      "liftEyeHeightM": 15,
+      "reachNote": null
+    },
+    {
+      "id": "S4",
+      "name": "地貌",
+      "rank": 3,
+      "liftEyeHeightM": 60,
+      "reachNote": null
+    },
+    {
+      "id": "S5",
+      "name": "岛屿",
+      "rank": 4,
+      "liftEyeHeightM": null,
+      "reachNote": "再向下看大地"
+    }
+  ],
+  "species": {
+    "grass": {
+      "id": "plant_grass_01",
+      "name": "细叶草",
+      "category": "grass",
+      "isAnimal": false,
+      "soundCue": null,
+      "stage": 0,
+      "tier": 0,
+      "scaleTier": "S1",
+      "mode": "ground",
+      "radius": 0.45,
+      "height": 0.7,
+      "wadeDepth": 0,
+      "surface": null,
+      "limbSwingRate": 0,
+      "activityRegion": null,
+      "speed": 2.8,
+      "boost": 2.7,
+      "turnSpeed": 180,
+      "camera": 3.5,
+      "fov": 48,
+      "firstPerson": {
+        "eyeOffset": [0, 0.35, 0],
+        "hideBody": true
+      },
+      "reach": 17.0,
+      "targets": ["grass", "rock", "gull", "silverfish", "discus", "human", "dog", "blueMorpho"],
+      "deny": [],
+      "place": "风起的地方",
+      "response": "天地与我并生，而万物与我为一。",
+      "moments": {},
+      "vision": {
+        "grayscale": 0,
+        "saturation": 1,
+        "contrast": 1,
+        "brightness": 1,
+        "fogMultiplier": 1,
+        "tint": null
+      },
+      "hearing": {
+        "airLowpassHz": 950,
+        "underwaterLowpassHz": 360,
+        "range": 20,
+        "waterCueGain": 0.6,
+        "windGain": 0.14,
+        "distantCueGain": 1,
+        "heightAttenuation": false
+      },
+      "collision": {
+        "boxes": [[-0.22, 0, -0.22, 0.22, 0.7, 0.22]],
+        "solid": false,
+        "passPolicy": "yield_with_bend"
+      },
+      "verticalControl": "none",
+      "flightHeight": null,
+      "staysAboveWater": false,
+      "guide": {
+        "shortName": "草",
+        "perceptionLine": "贴地视角，一切都变得巨大",
+        "location": "主岛各处草地与林间空地；有鱼的水域岸边都有草，邻岛上也有。",
+        "artNote": null,
+        "encyclopedia": [
+          {
+            "site": "中文维基百科",
+            "title": "禾本科",
+            "url": "https://zh.wikipedia.org/wiki/禾本科",
+            "license": "CC BY-SA 4.0",
+            "use": "节选",
+            "excerpt": "禾本科（学名：Poaceae或Gramineae），常泛称为禾草、真草（英语：true grasses），是被子植物中次于菊科、兰科、豆科、茜草科的第五大科，单子叶植物中次于兰科的第二大科。……除了荞麦跟藜麦以外，几乎所有的人类主食都是禾本科植物。大自然中的野草不只是动物的食物，还能制造大量氧气，防止水土流失。"
+          }
+        ]
+      }
+    },
+    "broadleaf": {
+      "id": "tree_broadleaf_01",
+      "name": "雨林阔叶树",
+      "category": "tree",
+      "isAnimal": false,
+      "soundCue": null,
+      "stage": 1,
+      "tier": 2,
+      "scaleTier": "S3",
+      "mode": "ground",
+      "radius": 5.0,
+      "height": 20.0,
+      "wadeDepth": 0,
+      "surface": null,
+      "limbSwingRate": 0,
+      "activityRegion": null,
+      "speed": 14.0,
+      "boost": 2.7,
+      "turnSpeed": 180,
+      "camera": 46.0,
+      "fov": 48,
+      "firstPerson": {
+        "eyeOffset": [0, 10.0, 0],
+        "hideBody": true
+      },
+      "reach": 180.0,
+      "targets": ["broadleaf", "palm", "kapok", "rock", "boulder", "human"],
+      "deny": [],
+      "place": "林冠之下",
+      "response": "人皆知有用之用，而莫知无用之用也。",
+      "moments": {},
+      "vision": {
+        "grayscale": 0,
+        "saturation": 1,
+        "contrast": 1,
+        "brightness": 1,
+        "fogMultiplier": 1,
+        "tint": null
+      },
+      "hearing": {
+        "airLowpassHz": 900,
+        "underwaterLowpassHz": 360,
+        "range": 60,
+        "waterCueGain": 0.5,
+        "windGain": 0.17,
+        "distantCueGain": 1,
+        "heightAttenuation": false
+      },
+      "collision": {
+        "boxes": [[-0.7, 0, -0.5, 0.7, 6.2, 0.9], [-9, 5.8, -8.5, 9.5, 20.3, 9.5]],
+        "solid": true,
+        "passPolicy": "go_around"
+      },
+      "verticalControl": "none",
+      "flightHeight": null,
+      "staysAboveWater": false,
+      "guide": {
+        "shortName": "阔叶树",
+        "perceptionLine": "站在林冠，视野高过草丛",
+        "location": "遍布主岛林地；出生空地旁就有一棵。",
+        "artNote": null,
+        "encyclopedia": [
+          {
+            "site": "中文维基百科",
+            "title": "林冠",
+            "url": "https://zh.wikipedia.org/wiki/林冠",
+            "license": "CC BY-SA 4.0",
+            "use": "节选",
+            "excerpt": "在生物学中，林冠是指植物群落或农作物里的离地部分，特别是树林中各棵林木树冠（单一树木主干以上的部分）组成的连续状态集合体。林冠包括了树冠所有的叶片、枝条、小枝及附生植物。林冠通过捕获太阳能并驱动水分在土壤和大气之间的交换，成为陆地生命形式的中心和食物链的基础。"
+          }
+        ]
+      }
+    },
+    "palm": {
+      "id": "tree_palm_01",
+      "name": "阿萨伊棕榈",
+      "category": "tree",
+      "isAnimal": false,
+      "soundCue": null,
+      "stage": 1,
+      "tier": 2,
+      "scaleTier": "S3",
+      "mode": "ground",
+      "radius": 2.6,
+      "height": 10.0,
+      "wadeDepth": 0,
+      "surface": null,
+      "limbSwingRate": 0,
+      "activityRegion": null,
+      "speed": 16.0,
+      "boost": 2.7,
+      "turnSpeed": 180,
+      "camera": 24.0,
+      "fov": 48,
+      "firstPerson": {
+        "eyeOffset": [0, 5.0, 0],
+        "hideBody": true
+      },
+      "reach": 150.0,
+      "targets": ["broadleaf", "palm", "kapok", "rock", "boulder", "human"],
+      "deny": [],
+      "place": "林下的阴凉",
+      "response": "",
+      "moments": {},
+      "vision": {
+        "grayscale": 0,
+        "saturation": 1,
+        "contrast": 1,
+        "brightness": 1,
+        "fogMultiplier": 1,
+        "tint": null
+      },
+      "hearing": {
+        "airLowpassHz": 900,
+        "underwaterLowpassHz": 360,
+        "range": 60,
+        "waterCueGain": 0.5,
+        "windGain": 0.17,
+        "distantCueGain": 1,
+        "heightAttenuation": false
+      },
+      "collision": {
+        "boxes": [[-1.6, 0, -0.9, 1.6, 3.3, 0.7], [-4.2, 3.3, -2.9, 4.2, 10.2, 2.7]],
+        "solid": true,
+        "passPolicy": "go_around"
+      },
+      "verticalControl": "none",
+      "flightHeight": null,
+      "staysAboveWater": false,
+      "guide": {
+        "shortName": "棕榈",
+        "perceptionLine": "水边低地的高视点",
+        "location": "主岛的湿润低地与牛轭湖岸；岩丘上和邻岛的巨岩旁也有。",
+        "artNote": null,
+        "encyclopedia": [
+          {
+            "site": "中文维基百科",
+            "title": "阿薩伊棕櫚",
+            "url": "https://zh.wikipedia.org/wiki/阿薩伊棕櫚",
+            "license": "CC BY-SA 4.0",
+            "use": "节选",
+            "excerpt": "阿萨伊棕榈（英语：acai palm）或千叶菜棕（学名：Euterpe oleracea）是一种原产于巴西亚马逊地区的棕榈树（棕榈科菜椰属），因其果实（阿萨伊果）、棕榈心（作为蔬菜）、叶子和树干木材而被人种植。该物种原产于亚马逊东部，尤其是巴西，主要分布在沼泽和洪泛平原，树干高大细长，可达25米（82英尺）高，羽状叶可长达3米（9.8英尺）。"
+          }
+        ]
+      }
+    },
+    "kapok": {
+      "id": "tree_kapok_01",
+      "name": "吉贝木棉",
+      "category": "tree",
+      "isAnimal": false,
+      "soundCue": null,
+      "stage": 1,
+      "tier": 2,
+      "scaleTier": "S3",
+      "mode": "ground",
+      "radius": 9.0,
+      "height": 42.0,
+      "wadeDepth": 0,
+      "surface": null,
+      "limbSwingRate": 0,
+      "activityRegion": null,
+      "speed": 24.0,
+      "boost": 2.7,
+      "turnSpeed": 180,
+      "camera": 96.0,
+      "fov": 48,
+      "firstPerson": {
+        "eyeOffset": [0, 21.0, 0],
+        "hideBody": true
+      },
+      "reach": 300.0,
+      "targets": ["broadleaf", "palm", "kapok", "rock", "boulder", "human"],
+      "deny": [],
+      "place": "雨林之上",
+      "response": "",
+      "moments": {},
+      "vision": {
+        "grayscale": 0,
+        "saturation": 1,
+        "contrast": 1,
+        "brightness": 1,
+        "fogMultiplier": 1,
+        "tint": null
+      },
+      "hearing": {
+        "airLowpassHz": 900,
+        "underwaterLowpassHz": 360,
+        "range": 60,
+        "waterCueGain": 0.5,
+        "windGain": 0.17,
+        "distantCueGain": 1,
+        "heightAttenuation": false
+      },
+      "collision": {
+        "boxes": [[-1.2, 0, -1.2, 1.9, 25, 2.1], [-6, 0, -6, 6.5, 3.5, 6.5], [-19, 25, -18, 20, 42.5, 18]],
+        "solid": true,
+        "passPolicy": "go_around"
+      },
+      "verticalControl": "none",
+      "flightHeight": null,
+      "staysAboveWater": false,
+      "guide": {
+        "shortName": "木棉",
+        "perceptionLine": "越过林冠，看得最远",
+        "location": "主岛高于河面的天然堤与老阶地上，是岛上最高的树。",
+        "artNote": null,
+        "encyclopedia": [
+          {
+            "site": "中文维基百科",
+            "title": "美洲木棉",
+            "url": "https://zh.wikipedia.org/wiki/美洲木棉",
+            "license": "CC BY-SA 4.0",
+            "use": "节选",
+            "excerpt": "美洲木棉（学名：Ceiba pentandra），又名吉贝、吉贝木棉、爪哇木棉，为锦葵科木棉亚科美洲木棉属的植物。……原产热带美洲，后又引入热带非洲、亚洲，包括中国大陆的广东、广西、云南等地。"
+          }
+        ]
+      }
+    },
+    "rock": {
+      "id": "rock_coast_01",
+      "name": "海岸岩石",
+      "category": "rock",
+      "isAnimal": false,
+      "soundCue": null,
+      "stage": 1,
+      "tier": 1,
+      "scaleTier": "S2",
+      "mode": "ground",
+      "radius": 1.4,
+      "height": 2.0,
+      "wadeDepth": 3,
+      "surface": null,
+      "limbSwingRate": 0,
+      "activityRegion": null,
+      "speed": 9.0,
+      "boost": 2.7,
+      "turnSpeed": 180,
+      "camera": 8.0,
+      "fov": 48,
+      "firstPerson": {
+        "eyeOffset": [0, 1.0, 0],
+        "hideBody": true
+      },
+      "reach": 100.0,
+      "targets": ["grass", "broadleaf", "palm", "kapok", "rock", "gull", "silverfish", "discus", "human", "dog", "blueMorpho"],
+      "deny": [],
+      "place": "水线的边缘",
+      "response": "天下莫柔弱于水，而攻坚强者莫之能胜。",
+      "moments": {},
+      "vision": {
+        "grayscale": 0,
+        "saturation": 1,
+        "contrast": 1,
+        "brightness": 1,
+        "fogMultiplier": 1,
+        "tint": null
+      },
+      "hearing": {
+        "airLowpassHz": 700,
+        "underwaterLowpassHz": 360,
+        "range": 45,
+        "waterCueGain": 1.3,
+        "windGain": 0.07,
+        "distantCueGain": 1,
+        "heightAttenuation": false
+      },
+      "collision": {
+        "boxes": [[-1.7, -0.35, -1.35, 1.7, 1.9, 1.35]],
+        "solid": true,
+        "passPolicy": "go_around"
+      },
+      "verticalControl": "none",
+      "flightHeight": null,
+      "staysAboveWater": false,
+      "guide": {
+        "shortName": "岩石",
+        "perceptionLine": "坚实低重心，能没入浅水",
+        "location": "出生空地里；主岛外河岸浅水处的低矮礁石；邻岛岸边。",
+        "artNote": null,
+        "encyclopedia": [
+          {
+            "site": "中文维基百科",
+            "title": "礁",
+            "url": "https://zh.wikipedia.org/wiki/礁",
+            "license": "CC BY-SA 4.0",
+            "use": "节选",
+            "excerpt": "礁，也称岩礁、礁岩或礁石，指很小的岩石岛屿，通常小到无法居住。它可以是一个简单的岩石暗礁。……礁上可能会有植物生长，比如苔藓和小而耐寒的草。"
+          }
+        ]
+      }
+    },
+    "boulder": {
+      "id": "rock_large_01",
+      "name": "海岸巨岩",
+      "category": "rock",
+      "isAnimal": false,
+      "soundCue": null,
+      "stage": 2,
+      "tier": 3,
+      "scaleTier": "S4",
+      "mode": "ground",
+      "radius": 76,
+      "height": 70.0,
+      "wadeDepth": 10,
+      "surface": {
+        "type": "dome",
+        "radii": [67, 72, 58]
+      },
+      "limbSwingRate": 0,
+      "activityRegion": null,
+      "speed": 75.0,
+      "boost": 2.7,
+      "turnSpeed": 180,
+      "camera": 230.0,
+      "fov": 48,
+      "firstPerson": {
+        "eyeOffset": [0, 35.0, 0],
+        "hideBody": true
+      },
+      "reach": 1000.0,
+      "targets": ["broadleaf", "palm", "kapok", "boulder", "island"],
+      "deny": [],
+      "place": "云影之下",
+      "response": "天下莫大于秋豪之末，而大山为小。",
+      "moments": {},
+      "vision": {
+        "grayscale": 0,
+        "saturation": 1,
+        "contrast": 1,
+        "brightness": 1,
+        "fogMultiplier": 1,
+        "tint": null
+      },
+      "hearing": {
+        "airLowpassHz": 600,
+        "underwaterLowpassHz": 360,
+        "range": 200,
+        "waterCueGain": 0.5,
+        "windGain": 0.12,
+        "distantCueGain": 1,
+        "heightAttenuation": false
+      },
+      "collision": {
+        "boxes": [[-74, -80, -65, 74, 80, 65]],
+        "solid": true,
+        "passPolicy": "go_around"
+      },
+      "verticalControl": "none",
+      "flightHeight": null,
+      "staysAboveWater": false,
+      "guide": {
+        "shortName": "巨岩",
+        "perceptionLine": "背着树和草，俯看岛的一侧",
+        "location": "主岛的阶梯岩丘，岩丘上长着棕榈和草；每座邻岛各有一块。",
+        "artNote": null,
+        "encyclopedia": [
+          {
+            "site": "中文维基百科",
+            "title": "孤山",
+            "url": "https://zh.wikipedia.org/wiki/孤山",
+            "license": "CC BY-SA 4.0",
+            "use": "节选",
+            "excerpt": "孤山或残山（Inselberg  ），在平原上孤独耸立的山体，可以是山丘或巨大的岩石，是经过千百万年的侵蚀作用残存下来的地貌。因为看似海上的孤岛，又被译作岛山或岛状山。"
+          }
+        ]
+      }
+    },
+    "island": {
+      "id": "island_01",
+      "name": "岛屿",
+      "category": "island",
+      "isAnimal": false,
+      "soundCue": null,
+      "stage": 3,
+      "tier": 4,
+      "scaleTier": "S5",
+      "mode": "island",
+      "radius": 560.0,
+      "height": 40.0,
+      "wadeDepth": 0,
+      "surface": {
+        "type": "dome",
+        "radii": [560, 6, 340]
+      },
+      "limbSwingRate": 0,
+      "activityRegion": null,
+      "speed": 60.0,
+      "boost": 2.0,
+      "turnSpeed": 180,
+      "camera": 950.0,
+      "fov": 48,
+      "firstPerson": {
+        "eyeOffset": [0, 20.0, 0],
+        "hideBody": false
+      },
+      "reach": 16000.0,
+      "targets": ["boulder", "island"],
+      "deny": [],
+      "place": "大河之中",
+      "response": "这些无限空间的永恒沉默使我恐惧。",
+      "moments": {
+        "first_possess": "人将被抹去，如同大海边沙地上的一张脸。"
+      },
+      "vision": {
+        "grayscale": 0,
+        "saturation": 1,
+        "contrast": 1,
+        "brightness": 1,
+        "fogMultiplier": 1,
+        "tint": null
+      },
+      "hearing": {
+        "airLowpassHz": 450,
+        "underwaterLowpassHz": 360,
+        "range": 3000,
+        "waterCueGain": 1.5,
+        "windGain": 0.08,
+        "distantCueGain": 1,
+        "heightAttenuation": false
+      },
+      "collision": {
+        "boxes": [[-575, -10, -345, 600, 45, 350]],
+        "solid": true,
+        "passPolicy": "go_around"
+      },
+      "verticalControl": "none",
+      "flightHeight": null,
+      "staysAboveWater": false,
+      "guide": {
+        "shortName": "岛",
+        "perceptionLine": "在大河上漂移，带着一切",
+        "location": "你脚下的主岛，以及沿大河排列的三座邻岛。",
+        "artNote": null,
+        "encyclopedia": [
+          {
+            "site": "中文维基百科",
+            "title": "河岛",
+            "url": "https://zh.wikipedia.org/wiki/河岛",
+            "license": "CC BY-SA 4.0",
+            "use": "节选",
+            "excerpt": "河岛（又称河中岛或河心岛，古称州、洲），即指位在河流中间的岛屿，它由河道的变化所造成。例如世界最大河岛—巴西的巴纳纳尔岛就位在阿拉瓜亚河中央。"
+          }
+        ]
+      }
+    },
+    "gull": {
+      "id": "bird_gull_01",
+      "name": "海鸥",
+      "category": "bird",
+      "isAnimal": true,
+      "soundCue": "chirp",
+      "stage": 1,
+      "tier": 0,
+      "scaleTier": "S1",
+      "mode": "fly",
+      "radius": 0.5,
+      "height": 0.32,
+      "wadeDepth": 0,
+      "surface": null,
+      "limbSwingRate": 0,
+      "activityRegion": "island_airspace",
+      "speed": 18.0,
+      "boost": 2.7,
+      "turnSpeed": 180,
+      "camera": 3.5,
+      "fov": 52,
+      "firstPerson": {
+        "eyeOffset": [0, 0.155, -0.2],
+        "hideBody": true,
+        "lens": {
+          "fieldDeg": 110,
+          "curve": 0.45,
+          "round": 0,
+          "edgeBlur": 0.3,
+          "vignette": 0.1,
+          "note": "海鸥眼睛在头两侧、视野很宽：铺满屏幕约 110° 的宽视野，边缘轻微弯曲、稍虚，中央清楚，不做圆形（艺术表达，负责人 2026-11-14 选定，创作者 2026-11-14 确认；观感待试玩）"
+        },
+        "motion": {
+          "source": "wingbeat",
+          "wingBone": "wing3R",
+          "bodyBone": "body",
+          "flapBobM": 0.012,
+          "flapPitchDeg": 0.45,
+          "glideBobM": 0.004,
+          "climbGain": 0.5,
+          "boostGain": 0.3,
+          "note": "眼位随 Flap 振翅的实际翅尖高度起伏：翅膀扇到最低时身体最高，并轻微点头；Glide 滑翔只缓慢漂浮；只抬高不压低眼位（艺术表达，负责人 2026-11-14 选定，创作者 2026-11-14 确认；观感待试玩）"
+        }
+      },
+      "reach": 130.0,
+      "targets": ["grass", "rock", "gull", "silverfish", "discus", "human", "dog", "blueMorpho"],
+      "deny": [],
+      "place": "风的路径",
+      "response": "抟扶摇而上者九万里，去以六月息者也。",
+      "moments": {},
+      "vision": {
+        "grayscale": 0,
+        "saturation": 1.45,
+        "contrast": 1.18,
+        "brightness": 1.08,
+        "fogMultiplier": 0.3,
+        "tint": "#ffd9a0",
+        "tintOpacity": 0.32
+      },
+      "hearing": {
+        "airLowpassHz": 1400,
+        "underwaterLowpassHz": 360,
+        "range": 65,
+        "waterCueGain": 0.6,
+        "windGain": 0.16,
+        "distantCueGain": 1.1,
+        "heightAttenuation": true
+      },
+      "collision": {
+        "boxes": [[-0.69, 0.0, -0.34, 0.69, 0.32, 0.39]],
+        "solid": true,
+        "passPolicy": "go_around"
+      },
+      "verticalControl": "view_direction",
+      "flightHeight": null,
+      "staysAboveWater": false,
+      "guide": {
+        "shortName": "海鸥",
+        "perceptionLine": "随视线飞，越高看得越远",
+        "location": "出生点与牛轭湖上空，以及两片水塘、沙嘴、林间空地和南岸上空，时常低飞。",
+        "artNote": "游戏里更明亮、更暖的色调是一种表现方式，不是鸥眼中的真实世界。",
+        "encyclopedia": [
+          {
+            "site": "中文维基百科",
+            "title": "鷗",
+            "url": "https://zh.wikipedia.org/wiki/鷗",
+            "license": "CC BY-SA 4.0",
+            "use": "节选",
+            "excerpt": "鸥（Laridae）是鸥科的简称，为最为普遍的海鸟，鸟纲鸻形目的一个科，包括普通海鸥、燕鸥、剪嘴鸥和三趾鸥。……大部分鸥，特别是属于鸥属的物种，是杂食性动物。……除了三趾鸥外，鸥通常是沿海或内地的物种，极少数会冒险在大洋上生活。"
+          }
+        ]
+      }
+    },
+    "silverfish": {
+      "id": "fish_silver_01",
+      "name": "银斧鱼",
+      "category": "fish",
+      "isAnimal": true,
+      "soundCue": null,
+      "stage": 1,
+      "tier": 0,
+      "scaleTier": "S1",
+      "mode": "swim",
+      "radius": 0.35,
+      "height": 0.32,
+      "wadeDepth": 0,
+      "surface": null,
+      "limbSwingRate": 0,
+      "activityRegion": null,
+      "speed": 9.0,
+      "boost": 2.7,
+      "turnSpeed": 260,
+      "camera": 3.5,
+      "fov": 58,
+      "firstPerson": {
+        "eyeOffset": [0, 0.2, -0.2],
+        "hideBody": true,
+        "restPitchDeg": -12,
+        "lens": {
+          "fieldDeg": 150,
+          "curve": 1,
+          "round": 1,
+          "radius": 2.0,
+          "fade": 0.14,
+          "fadeMax": 0.85,
+          "ripple": 0.02,
+          "edgeBlur": 0.15,
+          "vignette": 0,
+          "note": "鱼眼：广角，圆大到只在画面四角露出一点，以缓慢的水波状边缘淡入当前水色，不用黑边（艺术表达，负责人 2026-11-14 选定，创作者 2026-11-14 确认；观感待试玩）"
+        },
+        "motion": {
+          "source": "tailbeat",
+          "headBone": "head",
+          "spineBone": "spine1",
+          "swayM": 0.004,
+          "swayYawDeg": 1.0,
+          "idleGain": 0.3,
+          "boostGain": 0.5,
+          "note": "眼位随游动动画里头部的实际摆动左右摆头（横移加视线偏转，不上下）：银斧鱼小而快，摆幅小、细碎；静止时为 idleGain 倍（艺术表达，负责人 2026-11-14 选定，创作者 2026-11-14 确认；观感待试玩）"
+        }
+      },
+      "reach": 100.0,
+      "targets": ["grass", "rock", "gull", "silverfish", "discus", "human", "dog", "blueMorpho"],
+      "deny": [],
+      "place": "水面下的群",
+      "response": "子非鱼，安知鱼之乐？",
+      "moments": {},
+      "vision": {
+        "grayscale": 0,
+        "saturation": 0.9,
+        "contrast": 1,
+        "brightness": 1.06,
+        "fogMultiplier": 1.2,
+        "tint": "#4f8fa6",
+        "tintOpacity": 0.12,
+        "underwaterFog": {
+          "color": "#2a78a0",
+          "density": 0.028,
+          "sky": "#5aaed0"
+        }
+      },
+      "hearing": {
+        "airLowpassHz": 1200,
+        "underwaterLowpassHz": 520,
+        "range": 50,
+        "waterCueGain": 1.4,
+        "windGain": 0.03,
+        "distantCueGain": 1.1,
+        "heightAttenuation": false
+      },
+      "collision": {
+        "boxes": [[-0.25, 0, -0.45, 0.25, 0.4, 0.65]],
+        "solid": true,
+        "passPolicy": "go_around"
+      },
+      "verticalControl": "view_direction",
+      "flightHeight": null,
+      "staysAboveWater": false,
+      "guide": {
+        "shortName": "银斧鱼",
+        "perceptionLine": "宽阔鱼眼，水下的听力专家",
+        "location": "牛轭湖里成群游动；两片林中水塘也有。",
+        "artNote": null,
+        "encyclopedia": [
+          {
+            "site": "英文维基百科",
+            "title": "Freshwater hatchetfish",
+            "url": "https://en.wikipedia.org/wiki/Freshwater_hatchetfish",
+            "license": "CC BY-SA 4.0",
+            "use": "节译",
+            "excerpt": "淡水胸斧鱼是辐鳍鱼的一个科，即胸斧鱼科（Gasteropelecidae），分布于南美洲和中美洲。普通胸斧鱼是观赏鱼爱好者中最受欢迎的成员。"
+          }
+        ]
+      }
+    },
+    "discus": {
+      "id": "fish_discus_01",
+      "name": "七彩神仙鱼",
+      "category": "fish",
+      "isAnimal": true,
+      "soundCue": null,
+      "stage": 1,
+      "tier": 0,
+      "scaleTier": "S1",
+      "mode": "swim",
+      "radius": 0.4,
+      "height": 0.45,
+      "wadeDepth": 0,
+      "surface": null,
+      "limbSwingRate": 0,
+      "activityRegion": null,
+      "speed": 7.0,
+      "boost": 2.7,
+      "turnSpeed": 130,
+      "camera": 3.5,
+      "fov": 58,
+      "firstPerson": {
+        "eyeOffset": [0, 0.25, -0.2],
+        "hideBody": true,
+        "lens": {
+          "fieldDeg": 155,
+          "curve": 1,
+          "round": 1,
+          "radius": 2.0,
+          "fade": 0.14,
+          "fadeMax": 0.85,
+          "ripple": 0.02,
+          "edgeBlur": 0.2,
+          "vignette": 0,
+          "note": "鱼眼：广角，圆大到只在画面四角露出一点，以缓慢的水波状边缘淡入当前水色，不用黑边（艺术表达，负责人 2026-11-14 选定，创作者 2026-11-14 确认；观感待试玩）"
+        },
+        "motion": {
+          "source": "tailbeat",
+          "headBone": "head",
+          "spineBone": "spine1",
+          "swayM": 0.009,
+          "swayYawDeg": 1.8,
+          "idleGain": 0.35,
+          "boostGain": 0.3,
+          "note": "眼位随游动动画里头部的实际摆动左右摆头（横移加视线偏转，不上下）：七彩神仙鱼身体扁圆、游得慢，摆幅较大、柔和；静止时为 idleGain 倍（艺术表达，负责人 2026-11-14 选定，创作者 2026-11-14 确认；观感待试玩）"
+        }
+      },
+      "reach": 100.0,
+      "targets": ["grass", "rock", "gull", "silverfish", "discus", "human", "dog", "blueMorpho"],
+      "deny": [],
+      "place": "河湾浅水",
+      "response": "",
+      "moments": {},
+      "vision": {
+        "grayscale": 0,
+        "saturation": 1,
+        "contrast": 1.06,
+        "brightness": 1.04,
+        "fogMultiplier": 1.6,
+        "tint": "#9a7a4a",
+        "tintOpacity": 0.12,
+        "underwaterFog": {
+          "color": "#4a8278",
+          "density": 0.05,
+          "sky": "#78b8a8"
+        }
+      },
+      "hearing": {
+        "airLowpassHz": 700,
+        "underwaterLowpassHz": 300,
+        "range": 28,
+        "waterCueGain": 1.4,
+        "windGain": 0.03,
+        "distantCueGain": 0.7,
+        "heightAttenuation": false
+      },
+      "collision": {
+        "boxes": [[-0.25, -0.03, -0.45, 0.25, 0.5, 0.65]],
+        "solid": true,
+        "passPolicy": "go_around"
+      },
+      "verticalControl": "view_direction",
+      "flightHeight": null,
+      "staysAboveWater": false,
+      "guide": {
+        "shortName": "神仙鱼",
+        "perceptionLine": "视野较近，水声低沉发闷",
+        "location": "主岛南岸外的浅水里单只巡游；牛轭湖与两片水塘也有。",
+        "artNote": null,
+        "encyclopedia": [
+          {
+            "site": "中文维基百科",
+            "title": "盘丽鱼属",
+            "url": "https://zh.wikipedia.org/wiki/盘丽鱼属",
+            "license": "CC BY-SA 4.0",
+            "use": "节选",
+            "excerpt": "盘丽鱼属（学名：Symphysodon），也称七彩神仙鱼属，是丽鱼科的一属，原产亚马逊河流域。为一类常见的热带淡水观赏鱼类。因成鱼的身体侧扁呈圆盘形，故名，体色会随着年龄的不同而变化。"
+          }
+        ]
+      }
+    },
+    "human": {
+      "id": "human_01",
+      "name": "人",
+      "category": "human",
+      "isAnimal": true,
+      "soundCue": null,
+      "stage": 1,
+      "tier": 1,
+      "scaleTier": "S2",
+      "mode": "ground",
+      "radius": 0.35,
+      "height": 1.75,
+      "wadeDepth": 0.6,
+      "surface": null,
+      "limbSwingRate": 7,
+      "activityRegion": null,
+      "speed": 6,
+      "boost": 2.7,
+      "turnSpeed": 180,
+      "camera": 5,
+      "fov": 48,
+      "firstPerson": {
+        "eyeOffset": [0, 0.875, 0],
+        "hideBody": true
+      },
+      "reach": 65,
+      "targets": ["grass", "broadleaf", "palm", "kapok", "rock", "gull", "silverfish", "discus", "human", "dog", "blueMorpho"],
+      "deny": [],
+      "place": "此刻的行路人",
+      "response": "号物之数谓之万，人处一焉。",
+      "moments": {},
+      "vision": {
+        "grayscale": 0,
+        "saturation": 1,
+        "contrast": 1,
+        "brightness": 1,
+        "fogMultiplier": 1,
+        "tint": null
+      },
+      "hearing": {
+        "airLowpassHz": 1200,
+        "underwaterLowpassHz": 360,
+        "range": 45,
+        "waterCueGain": 0.8,
+        "windGain": 0.11,
+        "distantCueGain": 1,
+        "heightAttenuation": false
+      },
+      "collision": {
+        "boxes": [[-0.3, 0, -0.3, 0.3, 1.8, 0.3]],
+        "solid": true,
+        "passPolicy": "go_around"
+      },
+      "verticalControl": "none",
+      "flightHeight": null,
+      "staysAboveWater": false,
+      "guide": {
+        "shortName": "人",
+        "perceptionLine": "一切的参照，也是起点",
+        "location": "牛轭湖东岸的出生空地，开局时你就是这个人。",
+        "artNote": null,
+        "encyclopedia": [
+          {
+            "site": "中文维基百科",
+            "title": "人",
+            "url": "https://zh.wikipedia.org/wiki/人",
+            "license": "CC BY-SA 4.0",
+            "use": "节选",
+            "excerpt": "人（学名：Homo sapiens；英语：Humans），又称人类，是灵长目下现存数量最多，分布范围最广的物种。人类体毛稀疏、习惯两足步行、拥有比其他动物复杂的脑部。他们亦发展出自己的文化和语言，并有着丰富的智力技能，促使他们实现技术革新。"
+          }
+        ]
+      }
+    },
+    "dog": {
+      "id": "dog_01",
+      "name": "狗",
+      "category": "dog",
+      "isAnimal": true,
+      "soundCue": null,
+      "stage": 1,
+      "tier": 0,
+      "scaleTier": "S1",
+      "mode": "ground",
+      "radius": 0.45,
+      "height": 0.8,
+      "wadeDepth": 0,
+      "surface": null,
+      "limbSwingRate": 10,
+      "activityRegion": null,
+      "speed": 7.5,
+      "boost": 2.7,
+      "turnSpeed": 180,
+      "camera": 4,
+      "fov": 48,
+      "firstPerson": {
+        "eyeOffset": [0, 0.66, -0.37],
+        "hideBody": true
+      },
+      "reach": 60,
+      "targets": ["grass", "rock", "gull", "silverfish", "discus", "human", "dog", "blueMorpho"],
+      "deny": [],
+      "place": "循着声音",
+      "response": "如果狮子会说话，我们也无法理解它。",
+      "moments": {},
+      "vision": {
+        "grayscale": 1,
+        "saturation": 1,
+        "contrast": 1.08,
+        "brightness": 1,
+        "fogMultiplier": 1,
+        "tint": null
+      },
+      "hearing": {
+        "airLowpassHz": 2600,
+        "underwaterLowpassHz": 360,
+        "range": 110,
+        "waterCueGain": 1.8,
+        "windGain": 0.11,
+        "distantCueGain": 1.8,
+        "heightAttenuation": false
+      },
+      "collision": {
+        "boxes": [[-0.32, 0, -0.6, 0.32, 0.85, 0.6]],
+        "solid": true,
+        "passPolicy": "go_around"
+      },
+      "verticalControl": "none",
+      "flightHeight": null,
+      "staysAboveWater": false,
+      "guide": {
+        "shortName": "狗",
+        "perceptionLine": "黑白视野，耳朵更灵",
+        "location": "出生空地旁，离开局的人只有几步。",
+        "artNote": "游戏里的黑白世界是一种表现方式，不是狗眼中的真实世界。",
+        "encyclopedia": [
+          {
+            "site": "英文维基百科",
+            "title": "Thai Ridgeback",
+            "url": "https://en.wikipedia.org/wiki/Thai_Ridgeback",
+            "license": "CC BY-SA 4.0",
+            "use": "节译",
+            "excerpt": "泰国脊背犬是源自泰国的犬种。……已辨认出八种独特的背脊毛纹：针形、羽形、箭形、琵琶形、提琴形、保龄球瓶形、叶形和鞍形。……背脊越宽，越受珍视。"
+          },
+          {
+            "site": "中文维基百科",
+            "title": "犬",
+            "url": "https://zh.wikipedia.org/wiki/犬",
+            "license": "CC BY-SA 4.0",
+            "use": "节选",
+            "excerpt": "在视觉方面，研究显示犬类属于“二色视”（dichromatic vision），即具有两种视锥细胞，而人类具有三种。犬类对蓝色与黄色辨识较为敏锐，但对红绿色区分能力有限。"
+          }
+        ]
+      }
+    },
+    "blueMorpho": {
+      "id": "insect_blue_morpho_01",
+      "name": "蓝闪蝶",
+      "category": "insect",
+      "isAnimal": true,
+      "soundCue": null,
+      "stage": 1,
+      "tier": 0,
+      "scaleTier": "S1",
+      "mode": "fly",
+      "radius": 0.19,
+      "height": 0.14,
+      "wadeDepth": 0,
+      "surface": null,
+      "limbSwingRate": 0,
+      "activityRegion": "island_airspace",
+      "speed": 2.7,
+      "boost": 1.65,
+      "turnSpeed": 180,
+      "camera": 0.48,
+      "fov": 64,
+      "firstPerson": {
+        "eyeOffset": [0, 0.07, 0],
+        "hideBody": true,
+        "lens": {
+          "fieldDeg": 106,
+          "curve": 0.28,
+          "edgeBlur": 0.25,
+          "vignette": 0.12
+        },
+        "motion": {
+          "source": "morpho_flap",
+          "bobM": 0.012,
+          "nodDeg": 0.55,
+          "swayYawDeg": 1.05
+        }
+      },
+      "reach": 18,
+      "targets": ["grass", "rock", "gull", "silverfish", "discus", "human", "dog", "blueMorpho"],
+      "deny": [],
+      "place": "草叶之间",
+      "response": "",
+      "moments": {},
+      "vision": {
+        "grayscale": 0,
+        "saturation": 1.22,
+        "contrast": 1.08,
+        "brightness": 1.03,
+        "fogMultiplier": 0.85,
+        "tint": "#528fa8",
+        "tintOpacity": 0.14
+      },
+      "hearing": {
+        "airLowpassHz": 1400,
+        "underwaterLowpassHz": 360,
+        "range": 65,
+        "waterCueGain": 0.6,
+        "windGain": 0.16,
+        "distantCueGain": 1.1,
+        "heightAttenuation": true
+      },
+      "collision": {
+        "boxes": [[-0.18, 0, -0.11, 0.18, 0.14, 0.11]],
+        "solid": true,
+        "passPolicy": "go_around"
+      },
+      "verticalControl": "view_direction",
+      "flightHeight": 8,
+      "staysAboveWater": true,
+      "guide": {
+        "shortName": "蓝闪蝶",
+        "perceptionLine": "在草叶间低空飞行",
+        "location": "出生空地一带的低空。",
+        "artNote": null,
+        "encyclopedia": [
+          {
+            "site": "中文维基百科",
+            "title": "閃蝶屬",
+            "url": "https://zh.wikipedia.org/wiki/閃蝶屬",
+            "license": "CC BY-SA 4.0",
+            "use": "节选",
+            "excerpt": "闪蝶属（学名：Morpho）是蛱蝶科眼蝶亚科闪蝶族中的一个属。闪蝶又名摩尔福蝶、摩尔浮蝶、灿蝶、大蓝蝶等。共有30个物种，以翅面华丽的闪蓝色著名，飞行时闪烁的蓝色夺目非常，因此受到蝴蝶收藏家珍视。……闪蝶分布于新热带界，即南北美洲内的热带地区。"
+          }
+        ]
+      }
+    }
+  },
+  "layout": {
+    "layoutId": "amazon_main_island_river_v2",
+    "mainIsland": "island-main",
+    "initialInstance": "human-first",
+    "savePlayerAliases": {
+      "butterflyfish-0": "discus-0",
+      "butterflyfish-1": "discus-1",
+      "butterflyfish-2": "discus-2",
+      "butterflyfish-3": "discus-3"
+    },
+    "regions": {
+      "main_land": {
+        "id": "main_land"
+      },
+      "lake": {
+        "id": "lake",
+        "shape": "ellipse",
+        "center": [-70, 8],
+        "radii": [64, 120],
+        "water": {
+          "type": "enclosed",
+          "surfaceY": 0.2,
+          "opacity": 0.92,
+          "look": {
+            "deep": "#4e8279",
+            "shallow": "#71998b",
+            "clarity": 4.5,
+            "flow": [0.12, 0.04],
+            "deepOpacity": 0.68,
+            "shallowOpacity": 0.6
+          }
+        }
+      },
+      "lake_shore": {
+        "id": "lake_shore",
+        "shape": "ellipse",
+        "center": [-70, 8],
+        "radii": [74, 130]
+      },
+      "pond_west": {
+        "id": "pond_west",
+        "shape": "ellipse",
+        "center": [-330, 60],
+        "radii": [60, 38],
+        "water": {
+          "type": "enclosed",
+          "surfaceY": 0.2,
+          "opacity": 0.92,
+          "look": {
+            "deep": "#527e72",
+            "shallow": "#789788",
+            "clarity": 4.0,
+            "flow": [0.12, 0.04],
+            "deepOpacity": 0.68,
+            "shallowOpacity": 0.6
+          }
+        }
+      },
+      "pond_south": {
+        "id": "pond_south",
+        "shape": "ellipse",
+        "center": [-10, -200],
+        "radii": [64, 38],
+        "water": {
+          "type": "enclosed",
+          "surfaceY": 0.2,
+          "opacity": 0.92,
+          "look": {
+            "deep": "#527e72",
+            "shallow": "#789788",
+            "clarity": 4.0,
+            "flow": [0.12, 0.04],
+            "deepOpacity": 0.68,
+            "shallowOpacity": 0.6
+          }
+        }
+      },
+      "spawn_clearing": {
+        "id": "spawn_clearing",
+        "shape": "ellipse",
+        "center": [6, 15],
+        "radii": [34, 30]
+      },
+      "homestead": {
+        "id": "homestead",
+        "shape": "ellipse",
+        "center": [31, 72],
+        "radii": [17, 15]
+      },
+      "settler_trail": {
+        "id": "settler_trail",
+        "shape": "path",
+        "points": [
+          [35.5, 72.3],
+          [37.4, 76.2],
+          [40.6, 84.5],
+          [48.5, 99],
+          [59, 113],
+          [67, 128],
+          [77.5, 144],
+          [87.5, 158],
+          [96, 171],
+          [104, 183.5],
+          [110, 192],
+          [114.4, 198.4]
+        ],
+        "halfWidthM": 4
+      },
+      "settler_trail_bed": {
+        "id": "settler_trail_bed",
+        "shape": "path",
+        "points": [
+          [35.5, 72.3],
+          [37.4, 76.2],
+          [40.6, 84.5],
+          [48.5, 99],
+          [59, 113],
+          [67, 128],
+          [77.5, 144],
+          [87.5, 158],
+          [96, 171],
+          [104, 183.5],
+          [110, 192],
+          [114.4, 198.4]
+        ],
+        "halfWidthM": 1.3
+      },
+      "homestead_yard": {
+        "id": "homestead_yard",
+        "shape": "ellipse",
+        "center": [33.16, 73.83],
+        "radii": [5.0, 3.4],
+        "rotationY": 0.468
+      },
+      "landing": {
+        "id": "landing",
+        "shape": "ellipse",
+        "center": [117.3, 204.7],
+        "radii": [4.5, 4.5]
+      },
+      "glade_west": {
+        "id": "glade_west",
+        "shape": "ellipse",
+        "center": [-420, -60],
+        "radii": [73.5, 57.75]
+      },
+      "glade_north": {
+        "id": "glade_north",
+        "shape": "ellipse",
+        "center": [-200, 205],
+        "radii": [60.900000000000006, 46.2]
+      },
+      "glade_east": {
+        "id": "glade_east",
+        "shape": "ellipse",
+        "center": [90, -90],
+        "radii": [54.6, 39.9]
+      },
+      "river_shallows": {
+        "id": "river_shallows"
+      },
+      "island_airspace": {
+        "id": "island_airspace",
+        "shape": "circle",
+        "center": [0, 0],
+        "radius": 900,
+        "minClearanceM": 0.3,
+        "minY": 0,
+        "maxY": 180,
+        "horizontalBoundary": "main island plus about 300 m"
+      },
+      "river": {
+        "id": "river",
+        "water": {
+          "type": "river",
+          "levelM": -0.1,
+          "minDepthM": 0.4,
+          "look": {
+            "deep": "#148ba6",
+            "shallow": "#50d8c4",
+            "clarity": 3.0,
+            "deepOpacity": 0.6,
+            "shallowOpacity": 0.28,
+            "flow": [1, 0]
+          },
+          "underwater": {
+            "fog": "#2f7f8f",
+            "fogDensity": 0.035,
+            "sky": "#5fb3c4",
+            "caustics": 0.9,
+            "causticScaleM": 1.8,
+            "bedTint": "#cbb98e",
+            "bedSand": 0.65,
+            "shafts": 0.3,
+            "motes": 0
+          }
+        },
+        "corridor": {
+          "halfWidthM": 640,
+          "lengthM": 12000,
+          "bankClearanceM": 60
+        }
+      }
+    },
+    "instances": [
+      {
+        "id": "island-main",
+        "carrier": "river",
+        "position": [0, 0, 0],
+        "placement": "main",
+        "kind": "island"
+      },
+      {
+        "id": "silverfish-8",
+        "carrier": "island-main",
+        "position": [-65, -0.6, 50],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "silverfish-9",
+        "carrier": "island-main",
+        "position": [-64, -0.6, 50],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "silverfish-10",
+        "carrier": "island-main",
+        "position": [-63, -0.6, 50],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "silverfish-11",
+        "carrier": "island-main",
+        "position": [-65, -0.6, 51],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "silverfish-12",
+        "carrier": "island-main",
+        "position": [-64, -0.6, 51],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "silverfish-13",
+        "carrier": "island-main",
+        "position": [-63, -0.6, 51],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "discus-4",
+        "carrier": "island-main",
+        "position": [-78, -1.05, -85],
+        "placement": "fixed",
+        "kind": "discus"
+      },
+      {
+        "id": "discus-5",
+        "carrier": "island-main",
+        "position": [-62, -1.05, 83],
+        "placement": "fixed",
+        "kind": "discus"
+      },
+      {
+        "id": "discus-6",
+        "carrier": "island-main",
+        "position": [-51, -1.05, -60],
+        "placement": "fixed",
+        "kind": "discus"
+      },
+      {
+        "id": "silverfish-14",
+        "carrier": "island-main",
+        "position": [-343.5, -0.52, 48],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "silverfish-15",
+        "carrier": "island-main",
+        "position": [-342.5, -0.52, 48],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "silverfish-16",
+        "carrier": "island-main",
+        "position": [-341.5, -0.52, 48],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "silverfish-17",
+        "carrier": "island-main",
+        "position": [-340.5, -0.52, 48],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "discus-7",
+        "carrier": "island-main",
+        "position": [-354, -1.05, 62],
+        "placement": "fixed",
+        "kind": "discus"
+      },
+      {
+        "id": "discus-8",
+        "carrier": "island-main",
+        "position": [-317, -1.05, 66],
+        "placement": "fixed",
+        "kind": "discus"
+      },
+      {
+        "id": "silverfish-18",
+        "carrier": "island-main",
+        "position": [-23.5, -0.52, -212],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "silverfish-19",
+        "carrier": "island-main",
+        "position": [-22.5, -0.52, -212],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "silverfish-20",
+        "carrier": "island-main",
+        "position": [-21.5, -0.52, -212],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "silverfish-21",
+        "carrier": "island-main",
+        "position": [-20.5, -0.52, -212],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "discus-9",
+        "carrier": "island-main",
+        "position": [-35, -1.05, -197],
+        "placement": "fixed",
+        "kind": "discus"
+      },
+      {
+        "id": "discus-10",
+        "carrier": "island-main",
+        "position": [7, -1.05, -199],
+        "placement": "fixed",
+        "kind": "discus"
+      },
+      {
+        "id": "grass-start",
+        "carrier": "island-main",
+        "position": [0, 0, 22],
+        "placement": "surface",
+        "kind": "grass"
+      },
+      {
+        "id": "grass-friend-0",
+        "carrier": "island-main",
+        "position": [0.0, 0, 21.0],
+        "placement": "surface",
+        "kind": "grass"
+      },
+      {
+        "id": "grass-friend-1",
+        "carrier": "island-main",
+        "position": [1.82, 0, 18.17],
+        "placement": "surface",
+        "kind": "grass"
+      },
+      {
+        "id": "grass-friend-2",
+        "carrier": "island-main",
+        "position": [-1.51, 0, 17.69],
+        "placement": "surface",
+        "kind": "grass"
+      },
+      {
+        "id": "grass-friend-3",
+        "carrier": "island-main",
+        "position": [-0.56, 0, 20.92],
+        "placement": "surface",
+        "kind": "grass"
+      },
+      {
+        "id": "grass-friend-4",
+        "carrier": "island-main",
+        "position": [1.98, 0, 18.71],
+        "placement": "surface",
+        "kind": "grass"
+      },
+      {
+        "id": "human-first",
+        "carrier": "island-main",
+        "position": [3, 0, 14],
+        "placement": "surface",
+        "kind": "human"
+      },
+      {
+        "id": "dog-first",
+        "carrier": "island-main",
+        "position": [5, 0, 19],
+        "placement": "surface",
+        "kind": "dog"
+      },
+      {
+        "id": "rock-first",
+        "carrier": "island-main",
+        "position": [6, -0.18, 11],
+        "placement": "surface",
+        "kind": "rock"
+      },
+      {
+        "id": "tree-first",
+        "carrier": "island-main",
+        "position": [-7, 0, 9],
+        "placement": "surface",
+        "kind": "broadleaf"
+      },
+      {
+        "id": "tree-forest",
+        "carrier": "island-main",
+        "position": [15, 0, -3],
+        "placement": "surface",
+        "kind": "broadleaf"
+      },
+      {
+        "id": "boulder-main",
+        "carrier": "island-main",
+        "position": [104, -5, -142],
+        "placement": "fixed",
+        "kind": "boulder"
+      },
+      {
+        "id": "palm-boulder-0",
+        "carrier": "boulder-main",
+        "position": [-13.5, 0, -5],
+        "placement": "surface",
+        "kind": "palm"
+      },
+      {
+        "id": "grass-boulder-0",
+        "carrier": "boulder-main",
+        "position": [-11.5, 0, -4],
+        "placement": "surface",
+        "kind": "grass"
+      },
+      {
+        "id": "palm-boulder-1",
+        "carrier": "boulder-main",
+        "position": [-4.5, 0, -3],
+        "placement": "surface",
+        "kind": "palm"
+      },
+      {
+        "id": "grass-boulder-1",
+        "carrier": "boulder-main",
+        "position": [-2.5, 0, -2],
+        "placement": "surface",
+        "kind": "grass"
+      },
+      {
+        "id": "palm-boulder-2",
+        "carrier": "boulder-main",
+        "position": [4.5, 0, -1],
+        "placement": "surface",
+        "kind": "palm"
+      },
+      {
+        "id": "grass-boulder-2",
+        "carrier": "boulder-main",
+        "position": [6.5, 0, 0],
+        "placement": "surface",
+        "kind": "grass"
+      },
+      {
+        "id": "palm-boulder-3",
+        "carrier": "boulder-main",
+        "position": [13.5, 0, 1],
+        "placement": "surface",
+        "kind": "palm"
+      },
+      {
+        "id": "grass-boulder-3",
+        "carrier": "boulder-main",
+        "position": [15.5, 0, 2],
+        "placement": "surface",
+        "kind": "grass"
+      },
+      {
+        "id": "rock-boulder-0",
+        "carrier": "boulder-main",
+        "position": [0, 0, 6],
+        "placement": "surface",
+        "kind": "rock"
+      },
+      {
+        "id": "gull-0",
+        "carrier": "island-main",
+        "position": [12, 26.0, 0],
+        "placement": "surface",
+        "kind": "gull"
+      },
+      {
+        "id": "gull-4",
+        "carrier": "island-main",
+        "position": [-110, 15.0, -40],
+        "placement": "fixed",
+        "kind": "gull"
+      },
+      {
+        "id": "silverfish-0",
+        "carrier": "island-main",
+        "position": [-44.5, -0.56, -12],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "silverfish-4",
+        "carrier": "island-main",
+        "position": [-44.5, -0.56, -11],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "discus-0",
+        "carrier": "island-main",
+        "position": [150, -1.3, 305],
+        "placement": "fixed",
+        "kind": "discus"
+      },
+      {
+        "id": "gull-1",
+        "carrier": "island-main",
+        "position": [14, 26.4, -3],
+        "placement": "surface",
+        "kind": "gull"
+      },
+      {
+        "id": "gull-5",
+        "carrier": "island-main",
+        "position": [-108, 15.3, -37],
+        "placement": "fixed",
+        "kind": "gull"
+      },
+      {
+        "id": "silverfish-1",
+        "carrier": "island-main",
+        "position": [-43.5, -0.56, -12],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "silverfish-5",
+        "carrier": "island-main",
+        "position": [-43.5, -0.56, -11],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "discus-1",
+        "carrier": "island-main",
+        "position": [152, -1.3, 303],
+        "placement": "fixed",
+        "kind": "discus"
+      },
+      {
+        "id": "gull-2",
+        "carrier": "island-main",
+        "position": [16, 26.8, -6],
+        "placement": "surface",
+        "kind": "gull"
+      },
+      {
+        "id": "gull-6",
+        "carrier": "island-main",
+        "position": [-106, 15.6, -34],
+        "placement": "fixed",
+        "kind": "gull"
+      },
+      {
+        "id": "silverfish-2",
+        "carrier": "island-main",
+        "position": [-42.5, -0.56, -12],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "silverfish-6",
+        "carrier": "island-main",
+        "position": [-42.5, -0.56, -11],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "discus-2",
+        "carrier": "island-main",
+        "position": [154, -1.3, 301],
+        "placement": "fixed",
+        "kind": "discus"
+      },
+      {
+        "id": "gull-3",
+        "carrier": "island-main",
+        "position": [18, 27.2, -9],
+        "placement": "surface",
+        "kind": "gull"
+      },
+      {
+        "id": "gull-7",
+        "carrier": "island-main",
+        "position": [-104, 15.9, -31],
+        "placement": "fixed",
+        "kind": "gull"
+      },
+      {
+        "id": "gull-8",
+        "carrier": "island-main",
+        "position": [-296, 30, 60],
+        "placement": "fixed",
+        "kind": "gull"
+      },
+      {
+        "id": "gull-9",
+        "carrier": "island-main",
+        "position": [26, 30, -200],
+        "placement": "fixed",
+        "kind": "gull"
+      },
+      {
+        "id": "gull-10",
+        "carrier": "island-main",
+        "position": [330, 30, 80],
+        "placement": "fixed",
+        "kind": "gull"
+      },
+      {
+        "id": "gull-11",
+        "carrier": "island-main",
+        "position": [-394, 30, -60],
+        "placement": "fixed",
+        "kind": "gull"
+      },
+      {
+        "id": "gull-12",
+        "carrier": "island-main",
+        "position": [-176, 30, 205],
+        "placement": "fixed",
+        "kind": "gull"
+      },
+      {
+        "id": "gull-13",
+        "carrier": "island-main",
+        "position": [130, 30, -58],
+        "placement": "fixed",
+        "kind": "gull"
+      },
+      {
+        "id": "gull-14",
+        "carrier": "island-main",
+        "position": [190, 30, 190],
+        "placement": "fixed",
+        "kind": "gull"
+      },
+      {
+        "id": "gull-15",
+        "carrier": "island-main",
+        "position": [-83, 30, 100],
+        "placement": "fixed",
+        "kind": "gull"
+      },
+      {
+        "id": "silverfish-3",
+        "carrier": "island-main",
+        "position": [-41.5, -0.56, -12],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "silverfish-7",
+        "carrier": "island-main",
+        "position": [-41.5, -0.56, -11],
+        "placement": "fixed",
+        "kind": "silverfish"
+      },
+      {
+        "id": "discus-3",
+        "carrier": "island-main",
+        "position": [156, -1.3, 299],
+        "placement": "fixed",
+        "kind": "discus"
+      },
+      {
+        "id": "blue-morpho-playable",
+        "carrier": "island-main",
+        "position": [16.15, 1.4, 19.7],
+        "placement": "surface",
+        "kind": "blueMorpho"
+      },
+      {
+        "id": "blue-morpho-playable-1",
+        "carrier": "island-main",
+        "position": [18.071947428640385, 1.55, 20.379629621983845],
+        "placement": "surface",
+        "kind": "blueMorpho"
+      },
+      {
+        "id": "blue-morpho-playable-2",
+        "carrier": "island-main",
+        "position": [13.21100825373951, 1.1, 18.139904013701774],
+        "placement": "surface",
+        "kind": "blueMorpho"
+      },
+      {
+        "id": "blue-morpho-playable-3",
+        "carrier": "island-main",
+        "position": [12.800467269028054, 1.7, 19.458077511332583],
+        "placement": "surface",
+        "kind": "blueMorpho"
+      },
+      {
+        "id": "blue-morpho-playable-4",
+        "carrier": "island-main",
+        "position": [3.5287472068616346, 1.25, 10.61699280763918],
+        "placement": "surface",
+        "kind": "blueMorpho"
+      },
+      {
+        "id": "blue-morpho-playable-5",
+        "carrier": "island-main",
+        "position": [8.890181675470718, 1.6, 4.703017895127601],
+        "placement": "surface",
+        "kind": "blueMorpho"
+      }
+    ],
+    "scatter": [
+      {
+        "id": "meadow-grass",
+        "carrier": "island-main",
+        "seed": 1926,
+        "count": 32,
+        "area": {
+          "center": [0, 15],
+          "size": [80, 70]
+        },
+        "placement": "surface",
+        "surfaceMin": 0.5,
+        "avoidRegions": ["lake"],
+        "kind": "grass"
+      },
+      {
+        "id": "start-grass",
+        "carrier": "island-main",
+        "seed": 1927,
+        "count": 4,
+        "area": {
+          "center": [8, 13],
+          "size": [6, 7]
+        },
+        "placement": "surface",
+        "kind": "grass"
+      },
+      {
+        "id": "grass-shore-lake",
+        "carrier": "island-main",
+        "seed": 1941,
+        "points": [
+          [-118, -76],
+          [-118, 90],
+          [-98, 69],
+          [-97, -57],
+          [-94, 122],
+          [-92, -107],
+          [-80, -34],
+          [-78, 47],
+          [-68, 19],
+          [-67, -9],
+          [-66, 118],
+          [-65, -98],
+          [-45, 98],
+          [-42, -82],
+          [-29, 72],
+          [-24, -60],
+          [-18, 44],
+          [-15, -32],
+          [-12, 14]
+        ],
+        "placement": "surface",
+        "kind": "grass"
+      },
+      {
+        "id": "grass-shore-pond-west",
+        "carrier": "island-main",
+        "seed": 1942,
+        "points": [
+          [-383, 56],
+          [-378, 72],
+          [-374, 41],
+          [-366, 83],
+          [-361, 31],
+          [-351, 89],
+          [-346, 25],
+          [-335, 91],
+          [-330, 24],
+          [-320, 94],
+          [-314, 26],
+          [-303, 90],
+          [-298, 29],
+          [-288, 83],
+          [-286, 40],
+          [-281, 56]
+        ],
+        "placement": "surface",
+        "kind": "grass"
+      },
+      {
+        "id": "grass-shore-pond-south",
+        "carrier": "island-main",
+        "seed": 1943,
+        "points": [
+          [-74, -211],
+          [-72, -195],
+          [-66, -180],
+          [-63, -223],
+          [-53, -170],
+          [-49, -231],
+          [-37, -165],
+          [-33, -235],
+          [-21, -164],
+          [-17, -234],
+          [-5, -164],
+          [-1, -235],
+          [11, -165],
+          [15, -233],
+          [27, -169],
+          [29, -225],
+          [43, -216]
+        ],
+        "placement": "surface",
+        "kind": "grass"
+      },
+      {
+        "id": "grass-shore-river-a06",
+        "carrier": "island-main",
+        "seed": 1944,
+        "points": [
+          [80, 228],
+          [94, 216],
+          [108, 204],
+          [122, 192],
+          [123, 140],
+          [137, 180],
+          [140, 147],
+          [152, 169],
+          [158, 144],
+          [172, 157],
+          [190, 161],
+          [208, 157],
+          [224, 148]
+        ],
+        "placement": "surface",
+        "kind": "grass"
+      },
+      {
+        "id": "grove",
+        "carrier": "island-main",
+        "seed": 1928,
+        "points": [[22, -26], [30, 40], [-8, -40]],
+        "placement": "surface",
+        "kind": "broadleaf"
+      },
+      {
+        "id": "grove-palm",
+        "carrier": "island-main",
+        "seed": 1929,
+        "points": [[40, -50], [63, -74], [12, -58]],
+        "placement": "surface",
+        "kind": "palm"
+      },
+      {
+        "id": "forest-broadleaf",
+        "carrier": "island-main",
+        "seed": 1930,
+        "count": 35,
+        "area": {
+          "center": [-10, 0],
+          "size": [1080, 640]
+        },
+        "surfaceMin": 0.9,
+        "avoidRegions": [
+          "lake_shore",
+          "spawn_clearing",
+          "glade_west",
+          "glade_north",
+          "glade_east",
+          "pond_west",
+          "pond_south",
+          "homestead",
+          "settler_trail"
+        ],
+        "placement": "surface",
+        "kind": "broadleaf"
+      },
+      {
+        "id": "forest-palm",
+        "carrier": "island-main",
+        "seed": 1931,
+        "count": 30,
+        "area": {
+          "center": [-40, 10],
+          "size": [900, 600]
+        },
+        "surfaceMin": 0.3,
+        "avoidRegions": [
+          "lake",
+          "spawn_clearing",
+          "glade_west",
+          "glade_north",
+          "glade_east",
+          "pond_west",
+          "pond_south",
+          "homestead",
+          "settler_trail"
+        ],
+        "placement": "surface",
+        "surfaceMax": 1.6,
+        "kind": "palm"
+      },
+      {
+        "id": "forest-kapok",
+        "carrier": "island-main",
+        "seed": 1933,
+        "count": 7,
+        "area": {
+          "center": [-60, 0],
+          "size": [1000, 600]
+        },
+        "surfaceMin": 2.4,
+        "avoidRegions": [
+          "lake_shore",
+          "spawn_clearing",
+          "glade_west",
+          "glade_north",
+          "glade_east",
+          "pond_west",
+          "pond_south",
+          "homestead",
+          "settler_trail"
+        ],
+        "placement": "surface",
+        "kind": "kapok"
+      },
+      {
+        "id": "kapok-lake",
+        "carrier": "island-main",
+        "seed": 1934,
+        "points": [[-26, -70], [52, 46]],
+        "placement": "surface",
+        "kind": "kapok"
+      },
+      {
+        "id": "scattered-rocks",
+        "carrier": "island-main",
+        "seed": 1932,
+        "placement": "surface",
+        "points": [
+          [-526, -0.22, -113],
+          [-521, -0.12, -138],
+          [-166, -0.19, -321],
+          [-145, -0.29, -314],
+          [40, -0.18, 280],
+          [280, -0.13, -120],
+          [365, -0.21, -40],
+          [358, -0.16, -48],
+          [369, -0.22, -34],
+          [280, -0.12, 120],
+          [191, -0.19, 163],
+          [182, -0.29, 169],
+          [-80, -0.18, 320],
+          [-327, -0.13, 322],
+          [-440, -0.21, 240],
+          [-520, -0.16, 80]
+        ],
+        "kind": "rock"
+      },
+      {
+        "id": "grass-inland",
+        "carrier": "island-main",
+        "seed": 1960,
+        "points": [
+          [-447.88, -264.1],
+          [-454.6, -193.75],
+          [-458.7, -117.28],
+          [-457.84, -35.72],
+          [-452.51, 46.35],
+          [-445.75, 123.97],
+          [-441.42, 195.32],
+          [-381.99, -260.48],
+          [-383.96, -192.14],
+          [-380.82, -118.81],
+          [-374.36, -39.31],
+          [-366.01, 123.47],
+          [-368.88, 197.82],
+          [-308.11, -256.77],
+          [-303.08, -189.28],
+          [-296.29, -118.8],
+          [-291.61, -42.16],
+          [-296.55, 121.49],
+          [-303.34, 198.96],
+          [-308.23, 270.16],
+          [-224.96, -253.62],
+          [-218.68, -185.68],
+          [-216, -117.26],
+          [-218.46, -43.76],
+          [-224.64, 35.86],
+          [-233.98, 198.54],
+          [-231.81, 272.72],
+          [-141.85, -251.59],
+          [-141.5, -181.95],
+          [-146, -114.45],
+          [-152.78, -43.84],
+          [-157.97, 32.96],
+          [-158.62, 114.68],
+          [-154.35, 196.63],
+          [-147.6, 273.94],
+          [-69.74, 193.56],
+          [-66.13, 273.6],
+          [-8.77, -107.14],
+          [7.46, 108.09],
+          [8.85, 189.88],
+          [5.19, 271.76],
+          [79.76, -36.07],
+          [83.74, 32.51],
+          [82.74, 106.34],
+          [77.32, 186.22],
+          [158.94, -32.33],
+          [149.17, 106.1],
+          [233.03, -101],
+          [227.9, -29.06],
+          [216.55, 107.41],
+          [293.54, -26.82],
+          [291, 42.48]
+        ],
+        "placement": "surface",
+        "kind": "grass"
+      }
+    ],
+    "riverTraffic": [
+      {
+        "id": "commuter-northbound",
+        "kind": "commuter_boat",
+        "speedMps": 8.0,
+        "phase": 0.47,
+        "route": [[-6500, -560], [-3500, -560], [0, -560], [3500, -560], [6500, -560]]
+      },
+      {
+        "id": "commuter-southbound",
+        "kind": "commuter_boat",
+        "speedMps": 7.0,
+        "phase": 0.4,
+        "route": [[6500, 560], [3500, 560], [0, 560], [-3500, 560], [-6500, 560]]
+      },
+      {
+        "id": "river_raft",
+        "kind": "log_raft",
+        "speedMps": 2.0,
+        "phase": 0.54,
+        "route": [[-6500, -545], [-3500, -545], [0, -545], [3500, -545], [6500, -545]]
+      }
+    ],
+    "riverJourney": {
+      "version": 1,
+      "experienceMinutes": [1, 20],
+      "encounters": {
+        "shoreDistanceM": 400,
+        "leaveMarginM": 180,
+        "cooldownSec": 65,
+        "flightDurationSec": 32
+      },
+      "wake": {
+        "minSpeedMps": 2,
+        "fullSpeedMps": 60,
+        "sampleDistanceM": 32,
+        "lifetimeSec": 10,
+        "maxSegments": 48
+      },
+      "traffic": {
+        "clearanceM": 18,
+        "bankMarginM": 12,
+        "approachM": 240,
+        "slowRatio": 0.38
+      },
+      "reaches": [
+        {
+          "id": "white-bird-bank",
+          "kind": "bird_bank",
+          "name": "白鸟浅岸",
+          "x": 1100,
+          "side": -1,
+          "radiusM": 760,
+          "birdCount": 24,
+          "treeHeightM": 64,
+          "fogMultiplier": 0.95,
+          "fogTint": "#cbd5cd"
+        },
+        {
+          "id": "mist-root-forest",
+          "kind": "mist_forest",
+          "name": "巨根雾林",
+          "x": -1550,
+          "side": 1,
+          "radiusM": 1050,
+          "birdCount": 18,
+          "treeHeightM": 78,
+          "fogMultiplier": 1.6,
+          "fogTint": "#b7cdc6"
+        },
+        {
+          "id": "golden-reed-bay",
+          "kind": "reed_bay",
+          "name": "金色苇湾",
+          "x": 3550,
+          "side": 1,
+          "radiusM": 1000,
+          "birdCount": 20,
+          "treeHeightM": 52,
+          "fogMultiplier": 0.8,
+          "fogTint": "#d6d0b6"
+        }
+      ]
+    },
+    "ambient": [
+      {
+        "id": "AM-HATCHET-LAKE-NORTH",
+        "type": "path",
+        "members": ["silverfish-8", "silverfish-9", "silverfish-10", "silverfish-11", "silverfish-12", "silverfish-13"],
+        "shape": "figure8",
+        "center": [-64, 50],
+        "radii": [10, 10],
+        "rotationDeg": 120,
+        "periodSec": 46,
+        "phaseDeg": 0,
+        "vertical": {
+          "mode": "belowSurface",
+          "water": "lake",
+          "depthM": 0.5
+        },
+        "formation": {
+          "columns": 3,
+          "spacingM": 1.0,
+          "wobbleM": 0.15
+        },
+        "animation": "move",
+        "maxSpeedMS": 5,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-DISCUS-LAKE-0",
+        "type": "path",
+        "members": ["discus-4"],
+        "shape": "ellipse",
+        "center": [-86, -85],
+        "radii": [8, 5],
+        "rotationDeg": 0,
+        "periodSec": 36,
+        "phaseDeg": 0,
+        "vertical": {
+          "mode": "belowSurface",
+          "water": "lake",
+          "depthM": 0.8
+        },
+        "animation": "idle",
+        "maxSpeedMS": 3,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-DISCUS-LAKE-1",
+        "type": "path",
+        "members": ["discus-5"],
+        "shape": "ellipse",
+        "center": [-70, 83],
+        "radii": [8, 5],
+        "rotationDeg": 0,
+        "periodSec": 42,
+        "phaseDeg": 0,
+        "vertical": {
+          "mode": "belowSurface",
+          "water": "lake",
+          "depthM": 0.8
+        },
+        "animation": "idle",
+        "maxSpeedMS": 3,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-DISCUS-LAKE-2",
+        "type": "path",
+        "members": ["discus-6"],
+        "shape": "ellipse",
+        "center": [-59, -60],
+        "radii": [8, 5],
+        "rotationDeg": 0,
+        "periodSec": 39,
+        "phaseDeg": 0,
+        "vertical": {
+          "mode": "belowSurface",
+          "water": "lake",
+          "depthM": 0.8
+        },
+        "animation": "idle",
+        "maxSpeedMS": 3,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-HATCHET-POND-WEST",
+        "type": "path",
+        "members": ["silverfish-14", "silverfish-15", "silverfish-16", "silverfish-17"],
+        "shape": "figure8",
+        "center": [-342, 48],
+        "radii": [10, 10],
+        "rotationDeg": 0,
+        "periodSec": 42,
+        "phaseDeg": 0,
+        "vertical": {
+          "mode": "belowSurface",
+          "water": "pond_west",
+          "depthM": 0.4
+        },
+        "formation": {
+          "columns": 4,
+          "spacingM": 1.0,
+          "wobbleM": 0.15
+        },
+        "animation": "move",
+        "maxSpeedMS": 5,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-DISCUS-POND-WEST-0",
+        "type": "path",
+        "members": ["discus-7"],
+        "shape": "ellipse",
+        "center": [-357, 62],
+        "radii": [3, 3],
+        "rotationDeg": 0,
+        "periodSec": 30,
+        "phaseDeg": 0,
+        "vertical": {
+          "mode": "belowSurface",
+          "water": "pond_west",
+          "depthM": 0.8
+        },
+        "animation": "idle",
+        "maxSpeedMS": 3,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-DISCUS-POND-WEST-1",
+        "type": "path",
+        "members": ["discus-8"],
+        "shape": "ellipse",
+        "center": [-324, 66],
+        "radii": [7, 5],
+        "rotationDeg": 0,
+        "periodSec": 38,
+        "phaseDeg": 0,
+        "vertical": {
+          "mode": "belowSurface",
+          "water": "pond_west",
+          "depthM": 0.8
+        },
+        "animation": "idle",
+        "maxSpeedMS": 3,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-HATCHET-POND-SOUTH",
+        "type": "path",
+        "members": ["silverfish-18", "silverfish-19", "silverfish-20", "silverfish-21"],
+        "shape": "figure8",
+        "center": [-22, -212],
+        "radii": [10, 10],
+        "rotationDeg": 0,
+        "periodSec": 48,
+        "phaseDeg": 0,
+        "vertical": {
+          "mode": "belowSurface",
+          "water": "pond_south",
+          "depthM": 0.4
+        },
+        "formation": {
+          "columns": 4,
+          "spacingM": 1.0,
+          "wobbleM": 0.15
+        },
+        "animation": "move",
+        "maxSpeedMS": 5,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-DISCUS-POND-SOUTH-0",
+        "type": "path",
+        "members": ["discus-9"],
+        "shape": "ellipse",
+        "center": [-42, -197],
+        "radii": [7, 5],
+        "rotationDeg": 0,
+        "periodSec": 40,
+        "phaseDeg": 0,
+        "vertical": {
+          "mode": "belowSurface",
+          "water": "pond_south",
+          "depthM": 0.8
+        },
+        "animation": "idle",
+        "maxSpeedMS": 3,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-DISCUS-POND-SOUTH-1",
+        "type": "path",
+        "members": ["discus-10"],
+        "shape": "ellipse",
+        "center": [0, -199],
+        "radii": [7, 5],
+        "rotationDeg": 0,
+        "periodSec": 44,
+        "phaseDeg": 0,
+        "vertical": {
+          "mode": "belowSurface",
+          "water": "pond_south",
+          "depthM": 0.8
+        },
+        "animation": "idle",
+        "maxSpeedMS": 3,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-0",
+        "members": ["gull-0"],
+        "shape": "ellipse",
+        "center": [4, -8],
+        "radii": [20, 20],
+        "periodSec": 32,
+        "phaseDeg": 0,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 2.5,
+          "highM": 26,
+          "lowAtDeg": 90,
+          "lowSlowdown": 0.65
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-1",
+        "members": ["gull-1"],
+        "shape": "ellipse",
+        "center": [-25, -12],
+        "radii": [44, 32],
+        "rotationDeg": 20,
+        "periodSec": 44,
+        "phaseDeg": 35,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 3,
+          "highM": 32,
+          "lowAtDeg": 100,
+          "lowSlowdown": 0.6
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-2",
+        "members": ["gull-2"],
+        "shape": "ellipse",
+        "center": [-83, -65],
+        "radii": [46, 28],
+        "periodSec": 40,
+        "phaseDeg": 50,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 3,
+          "highM": 22,
+          "lowAtDeg": 0,
+          "lowSlowdown": 0.6
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-3",
+        "members": ["gull-3"],
+        "shape": "ellipse",
+        "center": [120, -10],
+        "radii": [190, 150],
+        "rotationDeg": 25,
+        "periodSec": 150,
+        "phaseDeg": 60,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 5,
+          "highM": 55,
+          "lowAtDeg": 30,
+          "lowSlowdown": 0.5
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-4",
+        "members": ["gull-4"],
+        "shape": "ellipse",
+        "center": [-100, -30],
+        "radii": [20, 20],
+        "periodSec": 32,
+        "phaseDeg": 120,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 5,
+          "highM": 35,
+          "lowAtDeg": 90,
+          "lowSlowdown": 0.65
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-5",
+        "members": ["gull-5"],
+        "shape": "ellipse",
+        "center": [-70, -30],
+        "radii": [44, 32],
+        "rotationDeg": 20,
+        "periodSec": 44,
+        "phaseDeg": 165,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 5,
+          "highM": 35,
+          "lowAtDeg": 100,
+          "lowSlowdown": 0.6
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-6",
+        "members": ["gull-6"],
+        "shape": "ellipse",
+        "center": [-40, -30],
+        "radii": [46, 28],
+        "periodSec": 40,
+        "phaseDeg": 210,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 5,
+          "highM": 35,
+          "lowAtDeg": 0,
+          "lowSlowdown": 0.6
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-7",
+        "members": ["gull-7"],
+        "shape": "ellipse",
+        "center": [-10, -30],
+        "radii": [190, 150],
+        "rotationDeg": 25,
+        "periodSec": 150,
+        "phaseDeg": 255,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 5,
+          "highM": 35,
+          "lowAtDeg": 30,
+          "lowSlowdown": 0.5
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-8",
+        "members": ["gull-8"],
+        "shape": "ellipse",
+        "center": [-330, 60],
+        "radii": [34, 24],
+        "rotationDeg": 0,
+        "periodSec": 34,
+        "phaseDeg": 20,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 3,
+          "highM": 24,
+          "lowAtDeg": 0,
+          "lowSlowdown": 0.6
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-9",
+        "members": ["gull-9"],
+        "shape": "ellipse",
+        "center": [-10, -200],
+        "radii": [36, 22],
+        "rotationDeg": 0,
+        "periodSec": 36,
+        "phaseDeg": 80,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 3,
+          "highM": 24,
+          "lowAtDeg": 270,
+          "lowSlowdown": 0.6
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-10",
+        "members": ["gull-10"],
+        "shape": "ellipse",
+        "center": [300, 80],
+        "radii": [30, 20],
+        "rotationDeg": 0,
+        "periodSec": 32,
+        "phaseDeg": 140,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 3,
+          "highM": 26,
+          "lowAtDeg": 90,
+          "lowSlowdown": 0.6
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-11",
+        "members": ["gull-11"],
+        "shape": "ellipse",
+        "center": [-420, -60],
+        "radii": [26, 20],
+        "rotationDeg": 0,
+        "periodSec": 30,
+        "phaseDeg": 200,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 3,
+          "highM": 26,
+          "lowAtDeg": 0,
+          "lowSlowdown": 0.6
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-12",
+        "members": ["gull-12"],
+        "shape": "ellipse",
+        "center": [-200, 205],
+        "radii": [24, 18],
+        "rotationDeg": 0,
+        "periodSec": 30,
+        "phaseDeg": 260,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 3,
+          "highM": 26,
+          "lowAtDeg": 180,
+          "lowSlowdown": 0.6
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-13",
+        "members": ["gull-13"],
+        "shape": "ellipse",
+        "center": [100, -58],
+        "radii": [30, 12],
+        "rotationDeg": 0,
+        "periodSec": 31,
+        "phaseDeg": 310,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 3,
+          "highM": 26,
+          "lowAtDeg": 270,
+          "lowSlowdown": 0.6
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-14",
+        "members": ["gull-14"],
+        "shape": "ellipse",
+        "center": [150, 190],
+        "radii": [40, 20],
+        "rotationDeg": 0,
+        "periodSec": 38,
+        "phaseDeg": 30,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 3,
+          "highM": 24,
+          "lowAtDeg": 270,
+          "lowSlowdown": 0.6
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-GULL-15",
+        "members": ["gull-15"],
+        "shape": "ellipse",
+        "center": [-105, 100],
+        "radii": [22, 16],
+        "rotationDeg": 0,
+        "periodSec": 30,
+        "phaseDeg": 110,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 3,
+          "highM": 24,
+          "lowAtDeg": 0,
+          "lowSlowdown": 0.6
+        },
+        "type": "path",
+        "animation": "climb",
+        "maxSpeedMS": 14,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-HATCHET-SCHOOL",
+        "type": "path",
+        "members": [
+          "silverfish-0",
+          "silverfish-1",
+          "silverfish-2",
+          "silverfish-3",
+          "silverfish-4",
+          "silverfish-5",
+          "silverfish-6",
+          "silverfish-7"
+        ],
+        "shape": "figure8",
+        "center": [-43, -12],
+        "radii": [10, 20],
+        "rotationDeg": 0,
+        "periodSec": 50,
+        "phaseDeg": 0,
+        "vertical": {
+          "mode": "belowSurface",
+          "water": "lake",
+          "depthM": 0.5
+        },
+        "formation": {
+          "columns": 4,
+          "spacingM": 1.0,
+          "wobbleM": 0.15
+        },
+        "animation": "move",
+        "maxSpeedMS": 5,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-DISCUS-0",
+        "type": "path",
+        "members": ["discus-0"],
+        "shape": "ellipse",
+        "center": [150, 305],
+        "radii": [5, 3],
+        "rotationDeg": 0,
+        "periodSec": 34,
+        "phaseDeg": 0,
+        "vertical": {
+          "mode": "belowSurface",
+          "water": "river",
+          "depthM": 0.18
+        },
+        "animation": "idle",
+        "maxSpeedMS": 3,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-DISCUS-1",
+        "type": "path",
+        "members": ["discus-1"],
+        "shape": "ellipse",
+        "center": [152, 303],
+        "radii": [5, 3],
+        "rotationDeg": 37,
+        "periodSec": 40,
+        "phaseDeg": 61,
+        "vertical": {
+          "mode": "belowSurface",
+          "water": "river",
+          "depthM": 0.18
+        },
+        "animation": "idle",
+        "maxSpeedMS": 3,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-DISCUS-2",
+        "type": "path",
+        "members": ["discus-2"],
+        "shape": "ellipse",
+        "center": [154, 301],
+        "radii": [5, 3],
+        "rotationDeg": 74,
+        "periodSec": 38,
+        "phaseDeg": 122,
+        "vertical": {
+          "mode": "belowSurface",
+          "water": "river",
+          "depthM": 0.18
+        },
+        "animation": "idle",
+        "maxSpeedMS": 3,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-DISCUS-3",
+        "type": "path",
+        "members": ["discus-3"],
+        "shape": "ellipse",
+        "center": [156, 299],
+        "radii": [5, 3],
+        "rotationDeg": 111,
+        "periodSec": 44,
+        "phaseDeg": 183,
+        "vertical": {
+          "mode": "belowSurface",
+          "water": "river",
+          "depthM": 0.18
+        },
+        "animation": "idle",
+        "maxSpeedMS": 3,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-MORPHO-0",
+        "members": ["blue-morpho-playable"],
+        "shape": "ellipse",
+        "center": [15.5, 19.7],
+        "radii": [0.65, 0.55],
+        "periodSec": 8.72665,
+        "phaseDeg": 0.0,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 1.4,
+          "highM": 1.4
+        },
+        "type": "path",
+        "animation": "move",
+        "maxSpeedMS": 2.7,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-MORPHO-1",
+        "members": ["blue-morpho-playable-1"],
+        "shape": "ellipse",
+        "center": [17.8, 19],
+        "radii": [1.6, 1.4],
+        "periodSec": 8.17059,
+        "phaseDeg": 80.21409131831524,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 1.55,
+          "highM": 1.55
+        },
+        "type": "path",
+        "animation": "move",
+        "maxSpeedMS": 2.7,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-MORPHO-2",
+        "members": ["blue-morpho-playable-2"],
+        "shape": "ellipse",
+        "center": [14.3, 17.9],
+        "radii": [1.1, 1.7],
+        "periodSec": 7.61598,
+        "phaseDeg": 171.88733853924697,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 1.1,
+          "highM": 1.1
+        },
+        "type": "path",
+        "animation": "move",
+        "maxSpeedMS": 2.7,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-MORPHO-3",
+        "members": ["blue-morpho-playable-3"],
+        "shape": "ellipse",
+        "center": [13.2, 20.6],
+        "radii": [1.3, 1.2],
+        "periodSec": 7.189,
+        "phaseDeg": 252.10142985756227,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 1.7,
+          "highM": 1.7
+        },
+        "type": "path",
+        "animation": "move",
+        "maxSpeedMS": 2.7,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-MORPHO-4",
+        "members": ["blue-morpho-playable-4"],
+        "shape": "ellipse",
+        "center": [5, 9],
+        "radii": [2.5, 2],
+        "periodSec": 7.88354,
+        "phaseDeg": 126.05071492878113,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 1.25,
+          "highM": 1.25
+        },
+        "type": "path",
+        "animation": "move",
+        "maxSpeedMS": 2.7,
+        "resumeAfterSec": 4
+      },
+      {
+        "id": "AM-MORPHO-5",
+        "members": ["blue-morpho-playable-5"],
+        "shape": "ellipse",
+        "center": [8, 7],
+        "radii": [1.9, 2.6],
+        "periodSec": 6.96584,
+        "phaseDeg": 297.9380534680281,
+        "vertical": {
+          "mode": "aboveGround",
+          "lowM": 1.6,
+          "highM": 1.6
+        },
+        "type": "path",
+        "animation": "move",
+        "maxSpeedMS": 2.7,
+        "resumeAfterSec": 4
+      }
+    ]
+  },
+  "interactions": [
+    {
+      "id": "IX-GRASS-YIELD",
+      "trigger": {
+        "type": "proximity",
+        "radius": 1.35,
+        "continuous": true
+      },
+      "subject": {
+        "solid": true
+      },
+      "target": {
+        "categories": ["grass"]
+      },
+      "effect": {
+        "type": "bend",
+        "maxAngle": 0.75
+      },
+      "cooldownSec": 0
+    },
+    {
+      "id": "IX-BIRDS-RISE",
+      "trigger": {
+        "type": "proximity",
+        "radius": 6
+      },
+      "subject": {
+        "categories": ["human", "dog"]
+      },
+      "target": {
+        "categories": ["bird"]
+      },
+      "effect": {
+        "type": "flee",
+        "speed": 7,
+        "rise": 0.7,
+        "duration": 2.2,
+        "returnAfter": 10
+      },
+      "cooldownSec": 20
+    },
+    {
+      "id": "IX-FISH-SCATTER",
+      "trigger": {
+        "type": "proximity",
+        "radius": 2.5
+      },
+      "subject": {},
+      "target": {
+        "categories": ["fish"]
+      },
+      "effect": {
+        "type": "flee",
+        "speed": 3.5,
+        "rise": 0,
+        "duration": 1.2,
+        "returnAfter": 6
+      },
+      "cooldownSec": 8
+    },
+    {
+      "id": "IX-BIRD-CALL",
+      "trigger": {
+        "type": "focus",
+        "minFocusSec": 0.8
+      },
+      "subject": {},
+      "target": {
+        "categories": ["bird"]
+      },
+      "effect": {
+        "type": "call",
+        "cue": "chirp",
+        "volume": 0.03
+      },
+      "cooldownSec": 15
+    }
+  ],
+  "story": {
+    "statusHints": {
+      "rain_soon": "云层压低，阵雨快来了",
+      "dusk_soon": "太阳西沉，夜晚将近",
+      "night": "夜很短，月光下仍看得清",
+      "dawn_soon": "天快亮了，河上会起雾",
+      "dry_soon": "雨季将尽，草会慢慢变黄",
+      "wet_soon": "旱季将尽，阵雨会回来"
+    },
+    "edgeHints": {
+      "wild_bank": "林子太深了，这一片很危险",
+      "wild_bank_detail": "走进去会迷路，也没有地图能带你回来"
+    },
+    "scaleGuide": {
+      "up": "先成为{tier}档的身体，或飞到 {height} m 以上",
+      "upFlying": "先成为{tier}档的身体，或再升 {meters} m",
+      "down": "先成为{tier}档的身体",
+      "note": "，{note}"
+    }
+  },
+  "input": {
+    "bindings": [
+      {
+        "action": "move_forward",
+        "codes": ["KeyW", "ArrowUp"]
+      },
+      {
+        "action": "move_left",
+        "codes": ["KeyA", "ArrowLeft"]
+      },
+      {
+        "action": "move_back",
+        "codes": ["KeyS", "ArrowDown"]
+      },
+      {
+        "action": "move_right",
+        "codes": ["KeyD", "ArrowRight"]
+      },
+      {
+        "action": "look",
+        "codes": ["MouseMove", "PointerDrag"]
+      },
+      {
+        "action": "boost",
+        "codes": ["ShiftLeft", "ShiftRight"]
+      },
+      {
+        "action": "possess",
+        "codes": ["KeyR"]
+      },
+      {
+        "action": "toggle_view",
+        "codes": ["KeyV"]
+      },
+      {
+        "action": "map_toggle",
+        "codes": ["KeyM"]
+      },
+      {
+        "action": "map_zoom_in",
+        "codes": ["Equal", "NumpadAdd"]
+      },
+      {
+        "action": "map_zoom_out",
+        "codes": ["Minus", "NumpadSubtract"]
+      },
+      {
+        "action": "pause",
+        "codes": ["Escape"]
+      }
+    ]
+  },
+  "tuning": {
+    "possessionDurationSec": {
+      "value": 2.4
+    },
+    "angleTieToleranceDeg": {
+      "value": 1.5
+    },
+    "distanceTieToleranceM": {
+      "value": 0.15
+    },
+    "targetStableSec": {
+      "value": 0.12
+    },
+    "loadTimeoutSec": {
+      "value": 10
+    },
+    "rollbackDurationSec": {
+      "value": 0.8
+    },
+    "stuckAttemptSec": {
+      "value": 2
+    },
+    "stuckDisplacementM": {
+      "value": 0.05
+    },
+    "safeRecoveryGraceSec": {
+      "value": 1
+    },
+    "flightCeilingM": {
+      "value": 180
+    },
+    "cameraCollisionPaddingM": {
+      "value": 0.1
+    },
+    "mouseSensitivityRadPerPixel": {
+      "value": 0.0025
+    },
+    "pointerHintSec": {
+      "value": 6
+    },
+    "dialogueDisplaySec": {
+      "value": 6
+    },
+    "dialogueFadeInSec": {
+      "value": 1
+    },
+    "dialogueFadeOutSec": {
+      "value": 1.5
+    },
+    "audioCrossfadeSec": {
+      "value": 1.2
+    },
+    "airGroundSoundFadeStartM": {
+      "value": 5
+    },
+    "airGroundSoundFadeEndM": {
+      "value": 60
+    },
+    "warmStartTargetSec": {
+      "value": 5
+    },
+    "featureFreezeDaysBeforeDeadline": {
+      "value": 3
+    },
+    "perceptionCrossfadeSec": {
+      "value": 1.2
+    },
+    "scaleHideBelowStageOffset": {
+      "value": 1
+    },
+    "softBoundaryBandM": {
+      "value": 3
+    },
+    "collisionSkinM": {
+      "value": 0.012
+    },
+    "targetMinAngularSizeRad": {
+      "value": 0.008
+    },
+    "ownBodyAngleBiasRad": {
+      "value": 0.15
+    },
+    "viewLiftHysteresis": {
+      "value": 0.1
+    },
+    "dayLengthSec": {
+      "value": 1200
+    },
+    "seasonLengthSec": {
+      "value": 4800
+    },
+    "startTimeOfDay": {
+      "value": 0.36
+    },
+    "startSeason": {
+      "value": 0.1
+    },
+    "showerPeriodSec": {
+      "value": 150
+    },
+    "nightShare": {
+      "value": 0.2
+    },
+    "bankTreeDistanceM": {
+      "value": 2600
+    },
+    "firstPersonLensScale": {
+      "value": 1
+    },
+    "firstPersonLensRenderScale": {
+      "value": 1.5
+    },
+    "firstPersonMotionScale": {
+      "value": 1
+    },
+    "underwaterAirGain": {
+      "value": 0.08
+    },
+    "underwaterAirCueGain": {
+      "value": 0.15
+    },
+    "underwaterDroneGain": {
+      "value": 0.05
+    },
+    "underwaterSurfaceLapGain": {
+      "value": 0.03
+    },
+    "underwaterSurfaceLapDepthM": {
+      "value": 3
+    },
+    "underwaterStrokeGain": {
+      "value": 0.045
+    },
+    "underwaterBubbleGain": {
+      "value": 0.012
+    },
+    "underwaterBubbleEverySec": {
+      "value": 2.5
+    },
+    "wingbeatGain": {
+      "value": 0.025
+    },
+    "cueAirLowpassFactor": {
+      "value": 4
+    },
+    "skyForecastWindowSec": {
+      "value": 600
+    },
+    "skyRainLeadSec": {
+      "value": 45
+    },
+    "skyDuskLeadSec": {
+      "value": 60
+    },
+    "skyDawnLeadSec": {
+      "value": 45
+    },
+    "skySeasonLeadSec": {
+      "value": 120
+    },
+    "skyHintMaxPerKind": {
+      "value": 2
+    },
+    "skyHintMinGapSec": {
+      "value": 20
+    },
+    "skyHintDisplaySec": {
+      "value": 5
+    },
+    "airEnvironmentGain": {
+      "value": 0.45
+    },
+    "rainEnvironmentGain": {
+      "value": 0.15
+    },
+    "skyThunderGain": {
+      "value": 0.05
+    },
+    "skyInsectGain": {
+      "value": 0.012
+    },
+    "islandAscentDurationSec": {
+      "value": 7
+    },
+    "islandAscentHoldSec": {
+      "value": 4
+    },
+    "islandAscentSweepDeg": {
+      "value": 28
+    },
+    "islandAscentFovPushDeg": {
+      "value": 8
+    },
+    "scaleLadderHideAfterMoveSec": {
+      "value": 0.25
+    },
+    "scaleLadderReturnDelaySec": {
+      "value": 0.6
+    },
+    "perceptionLineDisplaySec": {
+      "value": 4
+    },
+    "wildEdgeWarnMarginM": {
+      "value": 25
+    },
+    "wildEdgeClearExtraM": {
+      "value": 10
+    }
+  }
+}

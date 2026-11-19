@@ -1,0 +1,774 @@
+{
+  "startupBytes": 194611584,
+  "environment": {
+    "heightfield": {
+      "url": "./public/terrain/island-height.bin",
+      "groundMap": "./public/terrain/island-ground.bin",
+      "grid": [1401, 901],
+      "size": [1400, 900],
+      "heightRange": [-9.0, 6.0],
+      "layers": [
+        {
+          "name": "sand",
+          "diffuse": "./public/textures/ground/coast_sand_01_diff_1k.jpg",
+          "normal": "./public/textures/ground/coast_sand_01_nor_1k.jpg",
+          "tileM": 2.6,
+          "roughness": 0.85
+        },
+        {
+          "name": "mud",
+          "diffuse": "./public/textures/ground/brown_mud_02_diff_1k.jpg",
+          "normal": "./public/textures/ground/brown_mud_02_nor_1k.jpg",
+          "tileM": 2.4,
+          "roughness": 0.6
+        },
+        {
+          "name": "grass",
+          "diffuse": "./public/textures/ground/leafy_grass_green_diff_1k.jpg",
+          "normal": "./public/textures/ground/leafy_grass_nor_1k.jpg",
+          "tileM": 2.2,
+          "roughness": 0.95
+        },
+        {
+          "name": "cracked",
+          "diffuse": "./public/textures/ground/mud_cracked_dry_03_diff_1k.jpg",
+          "normal": "./public/textures/ground/mud_cracked_dry_03_nor_1k.jpg",
+          "tileM": 3.2,
+          "roughness": 0.9
+        },
+        {
+          "name": "litter",
+          "diffuse": "./public/textures/ground/forest_leaves_04_diff_1k.jpg",
+          "normal": "./public/textures/ground/forest_leaves_04_nor_1k.jpg",
+          "tileM": 2.0,
+          "roughness": 0.95
+        }
+      ],
+      "groundGrid": [701, 451],
+      "rockAprons": [
+        {
+          "center": [6, 11],
+          "radii": [4.5, 3.4],
+          "rise": 0.18,
+          "soil": "litter",
+          "blend": 0.9
+        },
+        {
+          "center": [-518, -120],
+          "radii": [10, 8],
+          "rise": 0.46,
+          "soil": "mud",
+          "blend": 0.7
+        },
+        {
+          "center": [-160, -317],
+          "radii": [10, 9],
+          "rise": 0.32,
+          "soil": "mud",
+          "blend": 0.65
+        },
+        {
+          "center": [354, -40],
+          "radii": [8, 7],
+          "rise": 0.36,
+          "soil": "mud",
+          "blend": 0.68
+        },
+        {
+          "center": [194, 153],
+          "radii": [10, 8],
+          "rise": 0.48,
+          "soil": "mud",
+          "blend": 0.66
+        },
+        {
+          "center": [-314, 317],
+          "radii": [9, 7],
+          "rise": 0.35,
+          "soil": "mud",
+          "blend": 0.68
+        },
+        {
+          "center": [104, -130],
+          "radii": [88, 81],
+          "rise": 2.1,
+          "soil": "litter",
+          "blend": 0.72
+        }
+      ]
+    }
+  },
+  "species": {
+    "broadleaf": {
+      "url": "./public/models/vegetation/canopy.glb",
+      "lod": [
+        {
+          "node": "lod1",
+          "distance": 170
+        }
+      ],
+      "height": 20.0,
+      "collisionBoxes": [[-0.7, 0, -0.5, 0.7, 6.2, 0.9], [-9, 5.8, -8.5, 9.5, 20.3, 9.5]],
+      "pivot": "file_origin"
+    },
+    "palm": {
+      "url": "./public/models/vegetation/acai.glb",
+      "lod": [
+        {
+          "node": "lod1",
+          "distance": 150
+        }
+      ],
+      "height": 10.0,
+      "collisionBoxes": [[-1.6, 0, -0.9, 1.6, 3.3, 0.7], [-4.2, 3.3, -2.9, 4.2, 10.2, 2.7]],
+      "pivot": "file_origin"
+    },
+    "kapok": {
+      "url": "./public/models/vegetation/kapok.glb",
+      "lod": [
+        {
+          "node": "lod1",
+          "distance": 260
+        }
+      ],
+      "height": 42.0,
+      "collisionBoxes": [[-1.2, 0, -1.2, 1.9, 25, 2.1], [-6, 0, -6, 6.5, 3.5, 6.5], [-19, 25, -18, 20, 42.5, 18]],
+      "pivot": "file_origin"
+    },
+    "rock": {
+      "url": "./public/models/tidal-reef-v001.glb",
+      "height": 0.95,
+      "collisionBoxes": [
+        [-1.71, -0.35, -1.68, 1.71, 0.6, 1.68],
+        [-0.67, 0.6, -1.65, 1.59, 0.8, 0.95],
+        [0.41, 0.8, -1.27, 1.39, 0.95, -0.34]
+      ]
+    },
+    "boulder": {
+      "url": "./public/models/rocky-hill-v001.glb",
+      "height": 70,
+      "collisionBoxes": [[-74, -80, -65, 74, 80, 65]]
+    },
+    "gull": {
+      "url": "./public/models/bird_gull_01-v003.glb",
+      "height": 0.32,
+      "animations": {
+        "idle": "Glide",
+        "move": "Flap"
+      }
+    },
+    "silverfish": {
+      "url": "./public/models/fish_silver_01-v002.glb",
+      "height": 0.32,
+      "animations": {
+        "idle": "Swim",
+        "move": "SwimFast"
+      }
+    },
+    "discus": {
+      "url": "./public/models/fish_discus_01-v001.glb",
+      "height": 0.45,
+      "animations": {
+        "idle": "Swim",
+        "move": "SwimFast"
+      }
+    },
+    "human": {
+      "url": "./public/models/human_01-v001.glb",
+      "idleUrl": "./public/models/human_01-static-v001.glb",
+      "runUrl": "./public/models/human_01-run-v001.glb",
+      "swimUrl": "./public/models/human_01-swim-v001.glb",
+      "height": 1.75,
+      "rotation": [0, 3.141592653589793, 0],
+      "animations": {
+        "idle": "model-action",
+        "move": "model-action",
+        "run": "model-action",
+        "swim": "model-action"
+      }
+    },
+    "dog": {
+      "url": "./public/models/dog_01-v002.glb",
+      "height": 0.8,
+      "animations": {
+        "idle": "Idle",
+        "move": "Trot",
+        "run": "Gallop"
+      },
+      "pivot": "file_origin"
+    },
+    "blueMorpho": {
+      "url": "./public/models/blue-morpho-flight-v002.glb",
+      "height": 0.04,
+      "rotation": [-1.5707963267948966, 0, 0],
+      "proceduralAnimation": "morpho_wings"
+    }
+  },
+  "decor": [
+    {
+      "slotId": "env.meadow",
+      "type": "blades",
+      "style": "meadow",
+      "height": 0.45,
+      "scaleRange": [0.7, 1.3],
+      "wind": true,
+      "visibleUpToStage": 1,
+      "scatter": {
+        "carrier": "island-main",
+        "seed": 7,
+        "surfaceMin": 0.35,
+        "surfaceMax": 8,
+        "groundLayer": 2,
+        "cellM": 48,
+        "drawDistanceM": 150,
+        "areas": [
+          {
+            "center": [10, 15],
+            "size": [150, 150],
+            "count": 20000
+          },
+          {
+            "center": [-140, 8],
+            "size": [170, 240],
+            "count": 8000
+          },
+          {
+            "center": [60, 0],
+            "size": [900, 600],
+            "count": 14000
+          },
+          {
+            "center": [-420, -60],
+            "size": [140, 110],
+            "count": 3080
+          },
+          {
+            "center": [-200, 205],
+            "size": [116, 88],
+            "count": 2042
+          },
+          {
+            "center": [90, -90],
+            "size": [104, 76],
+            "count": 1581
+          }
+        ],
+        "avoidRegions": ["settler_trail_bed", "homestead_yard"],
+        "clumps": {
+          "cellM": 36,
+          "radiusM": 7,
+          "fraction": 0.75
+        }
+      }
+    },
+    {
+      "slotId": "env.pebbles",
+      "type": "pebble",
+      "height": 0.5,
+      "scaleRange": [0.3, 1.2],
+      "wind": false,
+      "visibleUpToStage": 1,
+      "scatter": {
+        "carrier": "island-main",
+        "seed": 500,
+        "waterDepthM": [0.15, 4],
+        "patchM": 9,
+        "areas": [
+          {
+            "center": [-70, 8],
+            "size": [128, 240],
+            "count": 500,
+            "waterType": "enclosed"
+          },
+          {
+            "center": [-330, 60],
+            "size": [120, 76],
+            "count": 260,
+            "waterType": "enclosed"
+          },
+          {
+            "center": [-10, -200],
+            "size": [128, 76],
+            "count": 260,
+            "waterType": "enclosed"
+          },
+          {
+            "center": [0, 0],
+            "size": [1400, 900],
+            "count": 30000,
+            "waterType": "river"
+          }
+        ],
+        "avoidRegions": ["landing"]
+      }
+    },
+    {
+      "slotId": "env.waterweeds",
+      "type": "waterweed",
+      "height": 1.2,
+      "scaleRange": [1, 1],
+      "wind": true,
+      "visibleUpToStage": 1,
+      "scatter": {
+        "carrier": "island-main",
+        "seed": 808,
+        "waterDepthM": [0.3, 2.6],
+        "patchM": 14,
+        "cellM": 40,
+        "drawDistanceM": 70,
+        "areas": [
+          {
+            "center": [0, 0],
+            "size": [1400, 900],
+            "count": 26000
+          }
+        ]
+      }
+    },
+    {
+      "slotId": "env.reeds",
+      "type": "blades",
+      "style": "reeds",
+      "height": 1.8,
+      "scaleRange": [0.7, 1.3],
+      "wind": true,
+      "visibleUpToStage": 1,
+      "scatter": {
+        "carrier": "island-main",
+        "seed": 71,
+        "surfaceMin": 0.1,
+        "surfaceMax": 0.9,
+        "groundLayer": 1,
+        "cellM": 48,
+        "drawDistanceM": 200,
+        "areas": [
+          {
+            "center": [-70, 8],
+            "size": [160, 280],
+            "count": 18000
+          },
+          {
+            "center": [0, 0],
+            "size": [1200, 720],
+            "count": 45000
+          }
+        ]
+      }
+    },
+    {
+      "slotId": "env.forest",
+      "type": "forest",
+      "height": 20,
+      "scaleRange": [1, 1],
+      "wind": false,
+      "visibleUpToStage": 1,
+      "scatter": {
+        "carrier": "island-main",
+        "seed": 61,
+        "surfaceMin": 0.6,
+        "groundLayer": "litter",
+        "avoidRegions": ["lake_shore", "spawn_clearing", "glade_west", "glade_north", "glade_east", "homestead", "settler_trail"],
+        "layers": [
+          {
+            "name": "emergent",
+            "models": ["kapok"],
+            "attempts": 200,
+            "heightM": [40, 46],
+            "spacingM": 90,
+            "trunk": 0.8,
+            "surfaceMin": 2.0,
+            "leanDeg": 1.5,
+            "ageSkew": 0.8
+          },
+          {
+            "name": "canopy",
+            "models": ["strangler_fig"],
+            "attempts": 1100,
+            "heightM": [22, 28],
+            "widthScale": [0.9, 1.1],
+            "spacingM": 34,
+            "overlap": 0.6,
+            "trunk": 0.85,
+            "leanDeg": 2,
+            "ageSkew": 1.2
+          },
+          {
+            "name": "palms",
+            "models": ["moriche_palm"],
+            "attempts": 2300,
+            "heightM": [14, 18],
+            "slender": 0.85,
+            "widthScale": [0.9, 1.1],
+            "spacingM": 18,
+            "trunk": 0.28,
+            "surfaceMax": 2.4,
+            "leanDeg": 5,
+            "clumpOffset": 8.1
+          },
+          {
+            "name": "subcanopy",
+            "models": ["cecropia"],
+            "attempts": 1600,
+            "heightM": [8, 12],
+            "widthScale": [0.9, 1.15],
+            "spacingM": 20,
+            "overlap": 0.7,
+            "trunk": 0.1,
+            "leanDeg": 5,
+            "ageSkew": 1.3,
+            "clumpOffset": 3.7
+          },
+          {
+            "name": "flowering",
+            "models": ["jacaranda"],
+            "attempts": 1700,
+            "heightM": [5, 7],
+            "widthScale": [0.9, 1.1],
+            "spacingM": 22,
+            "overlap": 0.7,
+            "trunk": 0.45,
+            "leanDeg": 4,
+            "ageSkew": 1.0,
+            "clumpOffset": 5.9,
+            "colourVariation": 0
+          }
+        ],
+        "areas": [
+          {
+            "center": [-20, 0],
+            "size": [1120, 680]
+          }
+        ],
+        "vegetation": "./public/models/vegetation/vegetation.json",
+        "clumping": {
+          "scaleM": 55,
+          "clearingBelow": 0.34,
+          "strength": 0.7
+        },
+        "lodRangesM": [170],
+        "blocksBodiesUpToM": 3,
+        "shadowDistanceM": 90
+      }
+    },
+    {
+      "slotId": "env.understory",
+      "type": "understory",
+      "height": 1.4,
+      "scaleRange": [0.6, 1.5],
+      "wind": true,
+      "visibleUpToStage": 1,
+      "scatter": {
+        "carrier": "island-main",
+        "seed": 91,
+        "surfaceMin": 0.5,
+        "groundLayer": "litter",
+        "drawDistanceM": 70,
+        "avoidRegions": ["lake"],
+        "areas": [
+          {
+            "center": [-20, 0],
+            "size": [1100, 660],
+            "count": 15000
+          }
+        ],
+        "plants": [
+          {
+            "model": "forest_fern",
+            "weight": 0.25,
+            "heightM": [0.7, 1.2],
+            "patchM": 14,
+            "groundLayer": "litter"
+          },
+          {
+            "model": "marantaceae",
+            "weight": 0.25,
+            "heightM": [1.1, 1.7],
+            "patchM": 18,
+            "groundLayer": "litter"
+          },
+          {
+            "model": "understory_palm",
+            "weight": 0.06,
+            "heightM": [2.6, 3.8],
+            "patchM": 28,
+            "groundLayer": "litter",
+            "spacingM": 5
+          },
+          {
+            "model": "forest_sedge",
+            "weight": 0.34,
+            "heightM": [0.45, 0.75],
+            "patchM": 10,
+            "groundLayer": 2
+          },
+          {
+            "model": "forest_sedge",
+            "weight": 0.07,
+            "heightM": [0.6, 1.0],
+            "patchM": 12,
+            "groundLayer": 1
+          },
+          {
+            "model": "heliconia",
+            "weight": 0.02,
+            "heightM": [1.6, 2.4],
+            "patchM": 20,
+            "groundLayer": "litter"
+          },
+          {
+            "model": "daisy",
+            "weight": 0.01,
+            "heightM": [0.3, 0.5],
+            "patchM": 12,
+            "groundLayer": 2
+          }
+        ],
+        "lodRangesM": [70],
+        "clumps": {
+          "cellM": 36,
+          "radiusM": 4.5
+        },
+        "keepClearGrassM": 1.2
+      }
+    },
+    {
+      "slotId": "env.flowers",
+      "type": "understory",
+      "height": 1.4,
+      "scaleRange": [0.6, 1.5],
+      "wind": true,
+      "visibleUpToStage": 1,
+      "scatter": {
+        "carrier": "island-main",
+        "seed": 91,
+        "surfaceMin": 0.5,
+        "groundLayer": "litter",
+        "drawDistanceM": 70,
+        "avoidRegions": ["lake", "homestead", "settler_trail"],
+        "areas": [
+          {
+            "center": [-20, 0],
+            "size": [1100, 660],
+            "count": 6800
+          }
+        ],
+        "plants": [
+          {
+            "model": "heliconia",
+            "weight": 0.3,
+            "heightM": [1.6, 2.4],
+            "patchM": 20
+          },
+          {
+            "model": "daisy",
+            "weight": 0.7,
+            "heightM": [0.3, 0.5],
+            "patchM": 12,
+            "groundLayer": 2
+          }
+        ],
+        "lodRangesM": [70],
+        "keepClearGrassM": 0.55
+      }
+    },
+    {
+      "slotId": "env.lilies",
+      "type": "understory",
+      "height": 0.2,
+      "scaleRange": [1, 1],
+      "wind": false,
+      "visibleUpToStage": 1,
+      "scatter": {
+        "carrier": "island-main",
+        "seed": 133,
+        "float": {
+          "minDepthM": 0.5
+        },
+        "drawDistanceM": 140,
+        "lodRangesM": [140],
+        "areas": [
+          {
+            "center": [-330, 60],
+            "size": [120, 76],
+            "count": 70
+          },
+          {
+            "center": [-10, -200],
+            "size": [128, 76],
+            "count": 70
+          },
+          {
+            "center": [-70, 8],
+            "size": [128, 240],
+            "count": 50
+          }
+        ],
+        "plants": [
+          {
+            "model": "lily",
+            "weight": 1,
+            "widthM": [3.5, 6],
+            "spacingM": 10
+          }
+        ]
+      }
+    },
+    {
+      "slotId": "env.fireflies",
+      "type": "fireflies",
+      "height": 0.05,
+      "scaleRange": [1, 1],
+      "wind": false,
+      "visibleUpToStage": 1,
+      "scatter": {
+        "carrier": "island-main",
+        "seed": 11,
+        "surfaceMin": 0.3,
+        "areas": [
+          {
+            "center": [10, 18],
+            "size": [130, 130],
+            "count": 300
+          },
+          {
+            "center": [-140, 8],
+            "size": [150, 220],
+            "count": 260
+          },
+          {
+            "center": [70, 40],
+            "size": [160, 120],
+            "count": 160
+          }
+        ]
+      }
+    },
+    {
+      "slotId": "env.river-boulders",
+      "url": "./public/models/coastal-boulder-v001.glb",
+      "height": 7,
+      "scaleRange": null,
+      "wind": false,
+      "visibleUpToStage": null,
+      "scatter": {
+        "carrier": "island-main",
+        "areas": [],
+        "points": [
+          {
+            "position": [-520, -1.8, -120],
+            "rotationY": 0.6,
+            "scale": 1.0
+          },
+          {
+            "position": [-160, -1.65, -320],
+            "rotationY": 2.1,
+            "scale": 1.18
+          },
+          {
+            "position": [355, -1.45, -42],
+            "rotationY": 4.8,
+            "scale": 0.72
+          },
+          {
+            "position": [195, -1.7, 155],
+            "rotationY": 3.4,
+            "scale": 0.92
+          },
+          {
+            "position": [-315, -1.65, 319],
+            "rotationY": 5.6,
+            "scale": 0.82
+          }
+        ]
+      }
+    },
+    {
+      "slotId": "env.stilt-house",
+      "url": "./public/models/stilt-house-v001.glb",
+      "height": 6.1,
+      "scaleRange": null,
+      "wind": false,
+      "visibleUpToStage": 3,
+      "scatter": {
+        "carrier": "island-main",
+        "areas": [],
+        "points": [
+          {
+            "position": [31, 0, 70],
+            "rotationY": 0.468,
+            "scale": 1.0
+          }
+        ],
+        "footprint": [[-3.6, -1.6, 2.3], [-3.6, 1.4, 2.3], [0, -1.6, 2.3], [0, 1.4, 2.3], [3.4, -1.6, 2.3], [3.4, 1.4, 2.3]],
+        "footprintTopM": 6.1
+      }
+    },
+    {
+      "slotId": "env.landing",
+      "type": "landing",
+      "height": null,
+      "scaleRange": null,
+      "wind": null,
+      "visibleUpToStage": 3,
+      "scatter": {
+        "carrier": "island-main",
+        "areas": [],
+        "trail": {
+          "region": "settler_trail",
+          "halfWidthM": 0.95,
+          "liftM": 0.05,
+          "tileM": 2.4,
+          "seed": 17,
+          "texture": "./public/textures/ground/brown_mud_02_diff_1k.jpg",
+          "normalMap": "./public/textures/ground/brown_mud_02_nor_1k.jpg"
+        },
+        "jetty": {
+          "start": [112.8, 196.6],
+          "heading": [0.61, 0.79],
+          "lengthM": 13,
+          "widthM": 1.5,
+          "deckY": 0.42,
+          "seed": 23
+        },
+        "canoe": {
+          "lengthM": 5.6,
+          "beamM": 0.82,
+          "depthM": 0.42,
+          "alongM": 9.2,
+          "offsetM": 1.4,
+          "waterY": -0.1,
+          "draftM": 0.13,
+          "yawDeg": 4
+        },
+        "yard": {
+          "origin": [31, 70],
+          "rotationY": 0.468,
+          "center": [0.2, 4.4],
+          "radii": [7.6, 5.0],
+          "region": "homestead_yard",
+          "seed": 31,
+          "woodpile": [-6.8, 0.8],
+          "stump": [-4.4, 4.4],
+          "jars": [[4.4, 4.4], [4.95, 4.0]],
+          "hearth": [-1.6, 6.6],
+          "smoke": {
+            "puffs": 11,
+            "lifeS": 7,
+            "riseM": 4.2,
+            "driftM": 1.4,
+            "opacity": 0.42
+          },
+          "lamp": {
+            "roomMin": [-3.68, 0.78, -2.12],
+            "roomMax": [3.5, 3.05, 1.66],
+            "door": [3.0, 1.9, 2.7],
+            "doorIntensity": 26,
+            "doorReachM": 14,
+            "fireIntensity": 9,
+            "fireReachM": 8
+          }
+        }
+      }
+    }
+  ]
+}
