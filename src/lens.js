@@ -12,11 +12,13 @@ import * as THREE from 'three';
 // A very wide perspective render is coarse in its middle, which a fisheye then enlarges; when
 // that would make the centre of the view blurry, the middle is also drawn into its own
 // screen-sized target at a narrower angle and used wherever it reaches (the sharp centre).
+// The same pass carries a body's colour vision (vision.colorMatrix), applied in linear light
+// before tone mapping; a body with colour vision and no lens goes through it unbent.
 const vertexShader=`varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.,1.);}`;
 const fragmentShader=`varying vec2 vUv;uniform sampler2D scene;uniform sampler2D centre;
 uniform float curve;uniform float round;uniform float radius;uniform float fade;uniform float fadeMax;uniform float ripple;uniform float time;
 uniform float aspect;uniform float wideHalf;uniform float targetHalf;uniform float centreHalf;uniform float sharp;
-uniform float blur;uniform float vignette;uniform vec2 texel;uniform vec3 rim;
+uniform float blur;uniform float vignette;uniform vec2 texel;uniform vec3 rim;uniform mat3 colour;
 void main(){
   vec2 p=(vUv-.5)*2.*vec2(aspect,1.);
   float edge=mix(length(vec2(aspect,1.)),radius,round),r=length(p)/edge;
@@ -33,6 +35,7 @@ void main(){
     float m=max(abs(uc.x-.5),abs(uc.y-.5)),w=(1.-smoothstep(.43,.49,m))*(1.-e);
     if(w>0.)c=mix(c,texture2D(centre,clamp(uc,0.,1.)).rgb,w);
   }
+  c=max(colour*c,0.);
   c*=1.-vignette*smoothstep(.55,1.,r);
   gl_FragColor=vec4(c,1.);
   #include <tonemapping_fragment>
@@ -71,18 +74,22 @@ export class Lens {
     const target=()=>new THREE.WebGLRenderTarget(1,1,{type:THREE.HalfFloatType,colorSpace:THREE.LinearSRGBColorSpace,samples:4});
     this.target=target();this.centre=target();
     const uniforms={scene:{value:this.target.texture},centre:{value:this.centre.texture},curve:{value:0},round:{value:0},radius:{value:2},fade:{value:.14},fadeMax:{value:0},ripple:{value:0},time:{value:0},
-      aspect:{value:1},wideHalf:{value:.5},targetHalf:{value:.5},centreHalf:{value:.5},sharp:{value:0},blur:{value:0},vignette:{value:0},texel:{value:new THREE.Vector2()},rim:{value:new THREE.Color()}};
+      aspect:{value:1},wideHalf:{value:.5},targetHalf:{value:.5},centreHalf:{value:.5},sharp:{value:0},blur:{value:0},vignette:{value:0},texel:{value:new THREE.Vector2()},rim:{value:new THREE.Color()},colour:{value:new THREE.Matrix3()}};
     this.material=new THREE.ShaderMaterial({uniforms,vertexShader,fragmentShader,depthTest:false,depthWrite:false});
     this.quad=new THREE.Mesh(new THREE.PlaneGeometry(2,2),this.material);this.quad.frustumCulled=false;
     this.screen=new THREE.Scene();this.screen.add(this.quad);this.flat=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
     this.last=null;
   }
   // Draws the frame through the lens (already blended and scaled); returns false when there is
-  // nothing to bend, so the caller renders normally. rim: the colour past a round lens's edge
+  // nothing to bend or recolour, so the caller renders normally. rim: the colour past a round lens's edge
   // (the water colour; linear, like scene.fog.color). renderScale: wide target size × the screen.
-  render(scene,camera,lens,{rim=null,renderScale=1.5}={}){
-    const r=this.renderer,fov=camera.fov,M=THREE.MathUtils;
-    if(lensIsPlain(lens,fov)){this.last=null;return false;}
+  // colour: a linear RGB matrix (row-major, 9 numbers) for the body's colour vision, or null.
+  render(scene,camera,lens,{rim=null,renderScale=1.5,colour=null}={}){
+    const r=this.renderer,fov=camera.fov,M=THREE.MathUtils,plain=lensIsPlain(lens,fov);
+    if(plain&&!colour){this.last=null;return false;}
+    // Colour alone: a lens whose edge (the screen corner) is at the camera's own corner angle maps
+    // the screen onto itself; drawn at screen size, without a sharp centre.
+    if(plain)lens={...plainLens(fov),fieldDeg:M.radToDeg(2*Math.atan(Math.tan(M.degToRad(fov/2))*Math.hypot(camera.aspect,1)))};
     r.getDrawingBufferSize(this.size);
     const D=M.degToRad,budget=Math.sqrt(PIXEL_BUDGET/Math.max(1,this.size.x*this.size.y));
     const wideHalf=Math.min(D(78),Math.max(D(fov/2),D(lens.fieldDeg/2)));
@@ -91,8 +98,8 @@ export class Lens {
     const corner=Math.hypot(camera.aspect,1),rc=corner/edge,cornerTheta=M.lerp(Math.atan(rc*Math.tan(wideHalf)),rc*wideHalf,lens.curve);
     const reach=Math.min(D(84),Math.max(cornerTheta,wideHalf)),targetHalf=Math.atan(Math.tan(reach)/corner);
     // Radians per screen half-height at the middle of the lens, and how much coarser the wide target is there.
-    const centreScale=M.lerp(Math.tan(wideHalf),wideHalf,lens.curve)/edge,wideK=Math.min(renderScale,budget);
-    const coarse=Math.tan(targetHalf)/(centreScale*wideK),sharp=coarse>SHARP_AT;
+    const centreScale=M.lerp(Math.tan(wideHalf),wideHalf,lens.curve)/edge,wideK=plain?1:Math.min(renderScale,budget);
+    const coarse=Math.tan(targetHalf)/(centreScale*wideK),sharp=!plain&&coarse>SHARP_AT;
     const k=sharp?Math.min(renderScale*.5,budget):wideK,w=Math.max(1,Math.round(this.size.x*k)),h=Math.max(1,Math.round(this.size.y*k));
     if(this.target.width!==w||this.target.height!==h)this.target.setSize(w,h);
     let centreHalf=targetHalf,cw=0,ch=0;const shadows=r.shadowMap.autoUpdate;
@@ -119,6 +126,7 @@ export class Lens {
     u.curve.value=lens.curve;u.round.value=lens.round;u.radius.value=lens.radius;
     u.fade.value=lens.fade;u.fadeMax.value=lens.fadeMax;u.ripple.value=lens.ripple;u.time.value=this.clock.getElapsedTime();u.aspect.value=camera.aspect;
     u.blur.value=lens.edgeBlur;u.vignette.value=lens.vignette;u.texel.value.set(1/w,1/h);
+    if(colour)u.colour.value.set(...colour);else u.colour.value.identity();
     // Tone mapping and sRGB output happen in this screen pass (three.js skips both into a target);
     // the rim is mixed after them, so it is given in display colour.
     u.rim.value.copy(rim||this.rim.set(0,0,0)).convertLinearToSRGB();
@@ -126,7 +134,7 @@ export class Lens {
     // For checks: what was drawn, and how coarse the middle of the view is compared with the screen
     // (1 = pixel for pixel; the sharp centre brings it back near 1).
     const centreCoarse=sharp?Math.tan(centreHalf)/(centreScale*Math.min(1,budget)):coarse;
-    this.last={...lens,targetFovDeg:M.radToDeg(targetHalf*2),target:[w,h],sharp,centreFovDeg:sharp?M.radToDeg(centreHalf*2):null,centre:sharp?[cw,ch]:null,
+    this.last={...lens,colour,targetFovDeg:M.radToDeg(targetHalf*2),target:[w,h],sharp,centreFovDeg:sharp?M.radToDeg(centreHalf*2):null,centre:sharp?[cw,ch]:null,
       wideCoarse:+coarse.toFixed(2),centreCoarse:+centreCoarse.toFixed(2)};
     return true;
   }
