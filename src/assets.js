@@ -105,7 +105,13 @@ function loadModel(loader,url){
     const ok=finish(resolve),fail=finish(reject);
     const check=()=>{const idle=performance.now()-Math.max(started,lastBytesAt);if(idle>=limit())fail(new Error('timeout'));else timer=setTimeout(check,limit()-idle);};
     timer=setTimeout(check,limit());
-    loader.load(url,ok,e=>{
+    // Downloaded and read in two steps, so that a file which arrived but cannot be read is told
+    // apart from a download that failed: only the download is worth trying again.
+    new THREE.FileLoader(loader.manager).setResponseType('arraybuffer').load(url,data=>{
+      if(settled)return;
+      const unreadable=e=>fail(new UnreadableModel(e?.message||'unreadable'));
+      try{loader.parse(data,THREE.LoaderUtils.extractUrlBase(url),ok,unreadable);}catch(e){unreadable(e);}
+    },e=>{
       if(settled)return;
       const file=loadProgress.files.get(url)||{loaded:0,total:0};loadProgress.files.set(url,file);
       if(e.lengthComputable&&!file.total){file.total=e.total;loadProgress.total+=e.total;}
@@ -115,12 +121,19 @@ function loadModel(loader,url){
   });
 }
 const LOAD_ATTEMPTS=3;
+class UnreadableModel extends Error {}
+// The models are meshopt-compressed and need WebAssembly to be read. Without it (Lockdown Mode,
+// Safari without JIT, a page whose CSP forbids WebAssembly) the game cannot start, and says why.
+export class ModelsUnsupported extends Error {}
 
 // Loads every model the manifest names. Nothing stands in for a model that fails: a failed
-// download is tried again, and if it still fails prepare() rejects and the game does not start.
+// download is tried again, and if it still fails (or the file cannot be read) prepare() rejects
+// and the game does not start.
 export class AssetLibrary {
-  constructor(){this.loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);this.manifest=null;this.templates=new Map();this.decorTemplates=new Map();this.mixers=[];}
+  constructor(){this.loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);this.manifest=null;this.templates=new Map();this.decorTemplates=new Map();this.mixers=[];this.loading=new Map();}
   async prepare(){
+    if(!MeshoptDecoder.supported)throw new ModelsUnsupported('WebAssembly unavailable');
+    try{await MeshoptDecoder.ready;}catch(e){throw new ModelsUnsupported(`meshopt decoder: ${e?.message||e}`);}
     const r=await fetch('./public/models/manifest.json');if(!r.ok)throw Error(`Manifest ${r.status}`);
     this.manifest=await r.json();
     const jobs=[];
@@ -136,10 +149,16 @@ export class AssetLibrary {
       if(shape)t.gltf.scene.traverse(o=>{if(o.isMesh)foliage(o.material,shape);});
     }
   }
-  async load(url){
+  // A file named twice (a tree that is both a species and scenery) is loaded once; callers clone
+  // what they change, and foliage() leaves a material it has already prepared as it is.
+  load(url){
+    if(!this.loading.has(url))this.loading.set(url,this.download(url));
+    return this.loading.get(url);
+  }
+  async download(url){
     for(let attempt=1;;attempt++){
       try{return await loadModel(this.loader,url);}
-      catch(e){if(attempt>=LOAD_ATTEMPTS)throw new Error(`${url}: ${e?.message||'load failed'}`);}
+      catch(e){if(e instanceof UnreadableModel||attempt>=LOAD_ATTEMPTS)throw new Error(`${url}: ${e?.message||'load failed'}`);}
     }
   }
   async loadSlot(entry){

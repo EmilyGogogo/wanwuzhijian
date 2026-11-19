@@ -5,7 +5,7 @@
 | 内容 | 位置 | 来源与许可 |
 | --- | --- | --- |
 | Three.js 0.170.0 | `vendor/` | MIT License，原文见 `vendor/LICENSE.three` |
-| meshoptimizer 解码器（随 Three.js 0.170.0 发布） | `vendor/addons/libs/meshopt_decoder.module.js` | MIT License，© Arseny Kapoulkine，版权声明见文件头 |
+| meshoptimizer 解码器（随 Three.js 0.170.0 发布） | `vendor/addons/libs/meshopt_decoder.module.js` | MIT License，© Arseny Kapoulkine，原文见 `vendor/LICENSE.meshoptimizer` |
 | 模型（海鸥、银斧鱼、七彩神仙鱼、狗、蓝闪蝶、岩石、高脚屋与雨林植被） | `public/models/` | 由 Aholo Lux3D 国内版生成，Blender 修整；按 Aholo Lux3D 用户协议及赛事规则使用 |
 | 地表贴图：coast_sand_01、brown_mud_02、leafy_grass、mud_cracked_dry_03、forest_leaves_04 | `public/textures/ground/` | Poly Haven，CC0 |
 | 叶片与树皮贴图：island_tree_01、pachira_aquatica_01、bark_brown_02 | 打包在 `public/models/vegetation/` 中 | Poly Haven，CC0 |
