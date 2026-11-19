@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { AssetLibrary, loadProgress } from './assets.js';
+import { AssetLibrary, ModelsUnsupported, loadProgress } from './assets.js';
 import { texturesReady } from './textures.js';
 import { World, terrainHeight, PLANET_RADIUS, loadTerrainField } from './world.js';
 import { Minimap } from './minimap.js';
@@ -727,7 +727,7 @@ async function boot(){
   }catch(error){
     // Nothing stands in for a world that did not load completely: the game does not start.
     console.error(error);$('welcome').hidden=true;$('fallback').hidden=false;
-    $('fallback-detail').textContent=renderer?'世界没有完整载入。请检查网络后重新进入。':'这片世界暂时无法展开。请刷新，或使用支持 WebGL 2 的电脑浏览器。';
+    $('fallback-detail').textContent=error instanceof ModelsUnsupported?'这个浏览器不能运行 WebAssembly，读不了世界的模型。请关闭锁定模式，或换用其他浏览器。':renderer?'世界没有完整载入。请检查网络后重新进入。':'这片世界暂时无法展开。请刷新，或使用支持 WebGL 2 的电脑浏览器。';
   }
 }
 boot();
